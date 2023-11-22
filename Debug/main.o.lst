@@ -1,0 +1,104 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.main,"ax",%progbits
+  20              	 .align 2
+  21              	 .global main
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	main:
+  26              	.LFB343:
+  27              	 .file 1 "../main.c"
+   1:../main.c     **** #include "DAVE.h"
+   2:../main.c     **** #include <stdio.h>
+   3:../main.c     **** #include <stdlib.h>
+   4:../main.c     **** #include <string.h>
+   5:../main.c     **** #include "app.h"
+   6:../main.c     **** #include "at_commander.h"
+   7:../main.c     **** 
+   8:../main.c     **** int main(void) {
+  28              	 .loc 1 8 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32 0000 80B5     	 push {r7,lr}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 8
+  35              	 .cfi_offset 7,-8
+  36              	 .cfi_offset 14,-4
+  37 0002 82B0     	 sub sp,sp,#8
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+   9:../main.c     **** 
+  10:../main.c     **** 
+  11:../main.c     ****     DAVE_STATUS_t status;
+  12:../main.c     **** 
+  13:../main.c     ****     status = DAVE_Init(); /* Initialization of DAVE APPs */
+  43              	 .loc 1 13 0
+  44 0006 FFF7FEFF 	 bl DAVE_Init
+  45 000a 0346     	 mov r3,r0
+  46 000c FB71     	 strb r3,[r7,#7]
+  14:../main.c     **** 
+  15:../main.c     ****     if (status != DAVE_STATUS_SUCCESS) {
+  47              	 .loc 1 15 0
+  48 000e FB79     	 ldrb r3,[r7,#7]
+  49 0010 002B     	 cmp r3,#0
+  50 0012 00D0     	 beq .L2
+  51              	.L3:
+  16:../main.c     ****         /* Placeholder for error handler code. The while loop below can be replaced with a user err
+  17:../main.c     ****         XMC_DEBUG("DAVE APPs initialization failed\n");
+  18:../main.c     **** 
+  19:../main.c     ****         while (1U) {
+  20:../main.c     ****         }
+  52              	 .loc 1 20 0 discriminator 1
+  53 0014 FEE7     	 b .L3
+  54              	.L2:
+  21:../main.c     ****     }
+  22:../main.c     **** 
+  23:../main.c     **** 
+  24:../main.c     ****     while (1U) {
+  25:../main.c     **** 
+  26:../main.c     ****     	ATCMD_Task();
+  55              	 .loc 1 26 0 discriminator 1
+  56 0016 FFF7FEFF 	 bl ATCMD_Task
+  27:../main.c     **** 
+  28:../main.c     ****     }
+  57              	 .loc 1 28 0 discriminator 1
+  58 001a FCE7     	 b .L2
+  59              	 .cfi_endproc
+  60              	.LFE343:
+  62              	 .text
+  63              	.Letext0:
+  64              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+  65              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+  66              	 .file 4 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Dave/Generated/DAVE.h"
+  67              	 .file 5 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/cmsis_gcc.h"
+  68              	 .file 6 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/core_cm4.h"
+  69              	 .file 7 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:20     .text.main:00000000 $t
+    {standard input}:25     .text.main:00000000 main
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+DAVE_Init
+ATCMD_Task
