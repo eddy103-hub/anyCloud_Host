@@ -48,40 +48,38 @@
   41              	.LCFI2:
   42              	 .cfi_def_cfa_register 7
    9:../main.c     **** 
-  10:../main.c     **** 
-  11:../main.c     ****     DAVE_STATUS_t status;
-  12:../main.c     **** 
-  13:../main.c     ****     status = DAVE_Init(); /* Initialization of DAVE APPs */
-  43              	 .loc 1 13 0
+  10:../main.c     **** 	DAVE_STATUS_t status;
+  11:../main.c     **** 
+  12:../main.c     **** 	status = DAVE_Init(); /* Initialization of DAVE APPs */
+  43              	 .loc 1 12 0
   44 0006 FFF7FEFF 	 bl DAVE_Init
   45 000a 0346     	 mov r3,r0
   46 000c FB71     	 strb r3,[r7,#7]
-  14:../main.c     **** 
-  15:../main.c     ****     if (status != DAVE_STATUS_SUCCESS) {
-  47              	 .loc 1 15 0
+  13:../main.c     **** 
+  14:../main.c     **** 	if (status != DAVE_STATUS_SUCCESS) {
+  47              	 .loc 1 14 0
   48 000e FB79     	 ldrb r3,[r7,#7]
   49 0010 002B     	 cmp r3,#0
   50 0012 00D0     	 beq .L2
   51              	.L3:
-  16:../main.c     ****         /* Placeholder for error handler code. The while loop below can be replaced with a user err
-  17:../main.c     ****         XMC_DEBUG("DAVE APPs initialization failed\n");
-  18:../main.c     **** 
-  19:../main.c     ****         while (1U) {
-  20:../main.c     ****         }
-  52              	 .loc 1 20 0 discriminator 1
+  15:../main.c     **** 		/* Placeholder for error handler code. The while loop below can be replaced with a user error han
+  16:../main.c     **** 		XMC_DEBUG("DAVE APPs initialization failed\n");
+  17:../main.c     **** 
+  18:../main.c     **** 		while (1U) {
+  19:../main.c     **** 		}
+  52              	 .loc 1 19 0 discriminator 1
   53 0014 FEE7     	 b .L3
   54              	.L2:
-  21:../main.c     ****     }
-  22:../main.c     **** 
+  20:../main.c     **** 	}
+  21:../main.c     **** 
+  22:../main.c     **** 	while (1U) {
   23:../main.c     **** 
-  24:../main.c     ****     while (1U) {
-  25:../main.c     **** 
-  26:../main.c     ****     	ATCMD_Task();
-  55              	 .loc 1 26 0 discriminator 1
+  24:../main.c     **** 		ATCMD_Task();
+  55              	 .loc 1 24 0 discriminator 1
   56 0016 FFF7FEFF 	 bl ATCMD_Task
-  27:../main.c     **** 
-  28:../main.c     ****     }
-  57              	 .loc 1 28 0 discriminator 1
+  25:../main.c     **** 
+  26:../main.c     **** 	}
+  57              	 .loc 1 26 0 discriminator 1
   58 001a FCE7     	 b .L2
   59              	 .cfi_endproc
   60              	.LFE343:

@@ -3064,12 +3064,12 @@ END GROUP
                 0x08006100       0x14 ./Dave/Generated/DIGITAL_IO/digital_io_conf.o
                 0x08006100                BUTTON1
  .rodata        0x08006114       0x14 ./Dave/Generated/CLOCK_XMC4/clock_xmc4_conf.o
- .rodata.DigiCertGlobalRootG2
+ .rodata.digiCertGlobalRootG2
                 0x08006128      0x510 ./at_commander.o
-                0x08006128                DigiCertGlobalRootG2
- .rodata.ok_res
+                0x08006128                digiCertGlobalRootG2
+ .rodata.okResponse
                 0x08006638        0x8 ./at_commander.o
-                0x08006638                ok_res
+                0x08006638                okResponse
  .rodata        0x08006640      0x3c0 ./at_commander.o
  .rodata.str1.1
                 0x08006a00        0x2 c:/infineon/tools/dave ide/4.5.0.202105191637/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
@@ -3166,14 +3166,15 @@ Stack           0x1ffe8000      0x800
  .data.GLOBAL_CCU4_0
                 0x1ffe883c       0x10 ./Dave/Generated/GLOBAL_CCU4/global_ccu4_conf.o
                 0x1ffe883c                GLOBAL_CCU4_0
- .data.my_ba    0x1ffe884c       0x4c ./at_commander.o
-                0x1ffe884c                my_ba
- .data.device_id
+ .data.myBrokerAdress
+                0x1ffe884c       0x4c ./at_commander.o
+                0x1ffe884c                myBrokerAdress
+ .data.deviceId
                 0x1ffe8898       0x34 ./at_commander.o
-                0x1ffe8898                device_id
- .data.broker_userName
+                0x1ffe8898                deviceId
+ .data.brokerUsername
                 0x1ffe88cc       0x98 ./at_commander.o
-                0x1ffe88cc                broker_userName
+                0x1ffe88cc                brokerUsername
  .data.impure_data
                 0x1ffe8964       0x60 c:/infineon/tools/dave ide/4.5.0.202105191637/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
@@ -3536,7 +3537,7 @@ ETH_RAM         0x20000000        0x0
  .debug_frame   0x00003cf4       0x5c c:/infineon/tools/dave ide/4.5.0.202105191637/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-reent.o)
  .debug_frame   0x00003d50       0x20 c:/infineon/tools/dave ide/4.5.0.202105191637/eclipse/arm-gcc-49/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7e-m/softfp\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000     0x8233
+.debug_str      0x00000000     0x823e
  *(.debug_str)
  .debug_str     0x00000000      0x601 ./Startup/system_XMC4700.o
                                 0x66d (size before relaxing)
@@ -3588,9 +3589,9 @@ ETH_RAM         0x20000000        0x0
                                0x1b12 (size before relaxing)
  .debug_str     0x00007d8a       0xc1 ./app.o
                                 0x4db (size before relaxing)
- .debug_str     0x00007e4b      0x3de ./at_commander.o
-                               0x138c (size before relaxing)
- .debug_str     0x00008229        0xa ./main.o
+ .debug_str     0x00007e4b      0x3e9 ./at_commander.o
+                               0x1397 (size before relaxing)
+ .debug_str     0x00008234        0xa ./main.o
                                 0x2c7 (size before relaxing)
 
 .debug_loc      0x00000000     0x6ade

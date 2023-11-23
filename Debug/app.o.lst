@@ -78,7 +78,7 @@
   70 0002 00AF     	 add r7,sp,#0
   71              	.LCFI1:
   72              	 .cfi_def_cfa_register 7
-  20:../app.c      ****     return (rand() % 100);
+  20:../app.c      **** 	return (rand() % 100);
   73              	 .loc 1 20 0
   74 0004 FFF7FEFF 	 bl rand
   75 0008 0246     	 mov r2,r0
@@ -132,7 +132,7 @@
  121              	 .cfi_def_cfa_register 7
  122 0006 0346     	 mov r3,r0
  123 0008 FB80     	 strh r3,[r7,#6]
-  25:../app.c      ****     u16myTime = sec;
+  25:../app.c      **** 	u16myTime = sec;
  124              	 .loc 1 25 0
  125 000a FA88     	 ldrh r2,[r7,#6]
  126 000c 034B     	 ldr r3,.L6
@@ -179,24 +179,24 @@
  165 0002 00AF     	 add r7,sp,#0
  166              	.LCFI9:
  167              	 .cfi_def_cfa_register 7
-  30:../app.c      ****     if (bMyTimeoutFlag) {
+  30:../app.c      **** 	if (bMyTimeoutFlag) {
  168              	 .loc 1 30 0
  169 0004 074B     	 ldr r3,.L11
  170 0006 1B78     	 ldrb r3,[r3]
  171 0008 002B     	 cmp r3,#0
  172 000a 04D0     	 beq .L9
-  31:../app.c      ****         bMyTimeoutFlag = false;              // Reset the timeout flag
+  31:../app.c      **** 		bMyTimeoutFlag = false;              // Reset the timeout flag
  173              	 .loc 1 31 0
  174 000c 054B     	 ldr r3,.L11
  175 000e 0022     	 movs r2,#0
  176 0010 1A70     	 strb r2,[r3]
-  32:../app.c      ****         return true;
+  32:../app.c      **** 		return true;
  177              	 .loc 1 32 0
  178 0012 0123     	 movs r3,#1
  179 0014 00E0     	 b .L10
  180              	.L9:
-  33:../app.c      ****     }
-  34:../app.c      ****     return false;
+  33:../app.c      **** 	}
+  34:../app.c      **** 	return false;
  181              	 .loc 1 34 0
  182 0016 0023     	 movs r3,#0
  183              	.L10:
@@ -240,19 +240,19 @@
  219 0002 00AF     	 add r7,sp,#0
  220              	.LCFI13:
  221              	 .cfi_def_cfa_register 7
-  39:../app.c      ****     u16timerFlag = 1;
+  39:../app.c      **** 	u16timerFlag = 1;
  222              	 .loc 1 39 0
  223 0004 0B4B     	 ldr r3,.L15
  224 0006 0122     	 movs r2,#1
  225 0008 1A80     	 strh r2,[r3]
   40:../app.c      **** 
-  41:../app.c      ****     if (u16myTime) {
+  41:../app.c      **** 	if (u16myTime) {
  226              	 .loc 1 41 0
  227 000a 0B4B     	 ldr r3,.L15+4
  228 000c 1B88     	 ldrh r3,[r3]
  229 000e 002B     	 cmp r3,#0
  230 0010 0CD0     	 beq .L13
-  42:../app.c      ****         u16myTime--;
+  42:../app.c      **** 		u16myTime--;
  231              	 .loc 1 42 0
  232 0012 094B     	 ldr r3,.L15+4
  233 0014 1B88     	 ldrh r3,[r3]
@@ -260,19 +260,19 @@
  235 0018 9AB2     	 uxth r2,r3
  236 001a 074B     	 ldr r3,.L15+4
  237 001c 1A80     	 strh r2,[r3]
-  43:../app.c      ****         if (u16myTime == 0)
+  43:../app.c      **** 		if (u16myTime == 0)
  238              	 .loc 1 43 0
  239 001e 064B     	 ldr r3,.L15+4
  240 0020 1B88     	 ldrh r3,[r3]
  241 0022 002B     	 cmp r3,#0
  242 0024 02D1     	 bne .L13
-  44:../app.c      ****             bMyTimeoutFlag = true;            // Set timeout flag when the timer reaches zero
+  44:../app.c      **** 			bMyTimeoutFlag = true; // Set timeout flag when the timer reaches zero
  243              	 .loc 1 44 0
  244 0026 054B     	 ldr r3,.L15+8
  245 0028 0122     	 movs r2,#1
  246 002a 1A70     	 strb r2,[r3]
  247              	.L13:
-  45:../app.c      ****     }
+  45:../app.c      **** 	}
   46:../app.c      **** }
  248              	 .loc 1 46 0
  249 002c BD46     	 mov sp,r7
@@ -314,7 +314,7 @@
  284 0002 00AF     	 add r7,sp,#0
  285              	.LCFI17:
  286              	 .cfi_def_cfa_register 7
-  50:../app.c      ****     bTxReady = true;                          // Set transmission ready flag
+  50:../app.c      **** 	bTxReady = true;                          // Set transmission ready flag
  287              	 .loc 1 50 0
  288 0004 034B     	 ldr r3,.L18
  289 0006 0122     	 movs r2,#1
@@ -358,7 +358,7 @@
  325 0002 00AF     	 add r7,sp,#0
  326              	.LCFI21:
  327              	 .cfi_def_cfa_register 7
-  55:../app.c      ****     bRxReady = true;                          // Set reception ready flag
+  55:../app.c      **** 	bRxReady = true;                          // Set reception ready flag
  328              	 .loc 1 55 0
  329 0004 034B     	 ldr r3,.L21
  330 0006 0122     	 movs r2,#1

@@ -36,7 +36,6 @@ pLiaWN0bfVKfjllDiIGknibVb63dDcY3fe0Dkhvld1927jyNxF1WW6LZZm6zNTfl\n\
 MrY=\n\
 -----END CERTIFICATE-----\n"
 
-
 /**
  Section: AT Command Macro Declarations
  */
@@ -74,7 +73,6 @@ MrY=\n\
 #define MQTT_PAYLOAD_SIZE      256
 #define MQTT_SUB_QOS			1
 
-
 /**
  Section: Azure Macro Declarations
  */
@@ -99,6 +97,5 @@ MrY=\n\
 #define MY_AP       					"iPhone"
 #define MY_PASSWORD						"eddymeshack"
 #define NTP_SERVER  					"pool.ntp.org"
-
 
 #endif /* CONSTANTS_H_ */

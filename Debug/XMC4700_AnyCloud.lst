@@ -25,13 +25,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  10 .debug_frame  00003d70  00000000  00000000  0002c760  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    00008233  00000000  00000000  000304d0  2**0
+ 11 .debug_str    0000823e  00000000  00000000  000304d0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00006ade  00000000  00000000  00038703  2**0
+ 12 .debug_loc    00006ade  00000000  00000000  0003870e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000b50  00000000  00000000  0003f1e1  2**0
+ 13 .debug_ranges 00000b50  00000000  00000000  0003f1ec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .build_attributes 00000c44  00000000  00000000  0003fd31  2**0
+ 14 .build_attributes 00000c44  00000000  00000000  0003fd3c  2**0
                   CONTENTS, READONLY
 
 Disassembly of section .text:
@@ -7971,7 +7971,7 @@ volatile bool bRxReady = false;              // Reception ready flag
 double generateRandomTemperature() {
  8002b5c:	b580      	push	{r7, lr}
  8002b5e:	af00      	add	r7, sp, #0
-    return (rand() % 100);
+	return (rand() % 100);
  8002b60:	f001 fb12 	bl	8004188 <rand>
  8002b64:	4602      	mov	r2, r0
  8002b66:	4b09      	ldr	r3, [pc, #36]	; (8002b8c <generateRandomTemperature+0x30>)
@@ -8002,7 +8002,7 @@ void setTimeout(int16_t sec) {
  8002b94:	af00      	add	r7, sp, #0
  8002b96:	4603      	mov	r3, r0
  8002b98:	80fb      	strh	r3, [r7, #6]
-    u16myTime = sec;
+	u16myTime = sec;
  8002b9a:	88fa      	ldrh	r2, [r7, #6]
  8002b9c:	4b03      	ldr	r3, [pc, #12]	; (8002bac <setTimeout+0x1c>)
  8002b9e:	801a      	strh	r2, [r3, #0]
@@ -8020,20 +8020,20 @@ void setTimeout(int16_t sec) {
 bool isTimeout(void) {
  8002bb0:	b480      	push	{r7}
  8002bb2:	af00      	add	r7, sp, #0
-    if (bMyTimeoutFlag) {
+	if (bMyTimeoutFlag) {
  8002bb4:	4b07      	ldr	r3, [pc, #28]	; (8002bd4 <isTimeout+0x24>)
  8002bb6:	781b      	ldrb	r3, [r3, #0]
  8002bb8:	2b00      	cmp	r3, #0
  8002bba:	d004      	beq.n	8002bc6 <isTimeout+0x16>
-        bMyTimeoutFlag = false;              // Reset the timeout flag
+		bMyTimeoutFlag = false;              // Reset the timeout flag
  8002bbc:	4b05      	ldr	r3, [pc, #20]	; (8002bd4 <isTimeout+0x24>)
  8002bbe:	2200      	movs	r2, #0
  8002bc0:	701a      	strb	r2, [r3, #0]
-        return true;
+		return true;
  8002bc2:	2301      	movs	r3, #1
  8002bc4:	e000      	b.n	8002bc8 <isTimeout+0x18>
-    }
-    return false;
+	}
+	return false;
  8002bc6:	2300      	movs	r3, #0
 }
  8002bc8:	4618      	mov	r0, r3
@@ -8049,33 +8049,33 @@ bool isTimeout(void) {
 void Timer0_ISR(void) {
  8002bd8:	b480      	push	{r7}
  8002bda:	af00      	add	r7, sp, #0
-    u16timerFlag = 1;
+	u16timerFlag = 1;
  8002bdc:	4b0b      	ldr	r3, [pc, #44]	; (8002c0c <CCU43_1_IRQHandler+0x34>)
  8002bde:	2201      	movs	r2, #1
  8002be0:	801a      	strh	r2, [r3, #0]
 
-    if (u16myTime) {
+	if (u16myTime) {
  8002be2:	4b0b      	ldr	r3, [pc, #44]	; (8002c10 <CCU43_1_IRQHandler+0x38>)
  8002be4:	881b      	ldrh	r3, [r3, #0]
  8002be6:	2b00      	cmp	r3, #0
  8002be8:	d00c      	beq.n	8002c04 <CCU43_1_IRQHandler+0x2c>
-        u16myTime--;
+		u16myTime--;
  8002bea:	4b09      	ldr	r3, [pc, #36]	; (8002c10 <CCU43_1_IRQHandler+0x38>)
  8002bec:	881b      	ldrh	r3, [r3, #0]
  8002bee:	3b01      	subs	r3, #1
  8002bf0:	b29a      	uxth	r2, r3
  8002bf2:	4b07      	ldr	r3, [pc, #28]	; (8002c10 <CCU43_1_IRQHandler+0x38>)
  8002bf4:	801a      	strh	r2, [r3, #0]
-        if (u16myTime == 0)
+		if (u16myTime == 0)
  8002bf6:	4b06      	ldr	r3, [pc, #24]	; (8002c10 <CCU43_1_IRQHandler+0x38>)
  8002bf8:	881b      	ldrh	r3, [r3, #0]
  8002bfa:	2b00      	cmp	r3, #0
  8002bfc:	d102      	bne.n	8002c04 <CCU43_1_IRQHandler+0x2c>
-            bMyTimeoutFlag = true;            // Set timeout flag when the timer reaches zero
+			bMyTimeoutFlag = true; // Set timeout flag when the timer reaches zero
  8002bfe:	4b05      	ldr	r3, [pc, #20]	; (8002c14 <CCU43_1_IRQHandler+0x3c>)
  8002c00:	2201      	movs	r2, #1
  8002c02:	701a      	strb	r2, [r3, #0]
-    }
+	}
 }
  8002c04:	46bd      	mov	sp, r7
  8002c06:	f85d 7b04 	ldr.w	r7, [sp], #4
@@ -8090,7 +8090,7 @@ void Timer0_ISR(void) {
 void endOfTransmissionCB_ISR(void) {
  8002c18:	b480      	push	{r7}
  8002c1a:	af00      	add	r7, sp, #0
-    bTxReady = true;                          // Set transmission ready flag
+	bTxReady = true;                          // Set transmission ready flag
  8002c1c:	4b03      	ldr	r3, [pc, #12]	; (8002c2c <endOfTransmissionCB_ISR+0x14>)
  8002c1e:	2201      	movs	r2, #1
  8002c20:	701a      	strb	r2, [r3, #0]
@@ -8107,7 +8107,7 @@ void endOfTransmissionCB_ISR(void) {
 void endOfReceptionCB_ISR(void) {
  8002c30:	b480      	push	{r7}
  8002c32:	af00      	add	r7, sp, #0
-    bRxReady = true;                          // Set reception ready flag
+	bRxReady = true;                          // Set reception ready flag
  8002c34:	4b03      	ldr	r3, [pc, #12]	; (8002c44 <endOfReceptionCB_ISR+0x14>)
  8002c36:	2201      	movs	r2, #1
  8002c38:	701a      	strb	r2, [r3, #0]
@@ -8133,7 +8133,7 @@ void createPubMQTTString() {
  8002c4e:	f7ff ff85 	bl	8002b5c <generateRandomTemperature>
  8002c52:	e9c7 0100 	strd	r0, r1, [r7]
 
-	snprintf(bufferPayload, MQTT_PAYLOAD_SIZE,
+	snprintf(bufferPayload,
  8002c56:	e9d7 2300 	ldrd	r2, r3, [r7]
  8002c5a:	e9cd 2300 	strd	r2, r3, [sp]
  8002c5e:	4808      	ldr	r0, [pc, #32]	; (8002c80 <createPubMQTTString+0x38>)
@@ -8141,8 +8141,9 @@ void createPubMQTTString() {
  8002c64:	4a07      	ldr	r2, [pc, #28]	; (8002c84 <createPubMQTTString+0x3c>)
  8002c66:	4b08      	ldr	r3, [pc, #32]	; (8002c88 <createPubMQTTString+0x40>)
  8002c68:	f001 faf2 	bl	8004250 <sniprintf>
+	MQTT_PAYLOAD_SIZE,
 			"AT+MQTTPUB=0,0,0,\""PUB_TOPIC_TELEMETRY"\",\""PUB_TELEMETRY_TEMPERATURE"\"\r\n",
-			device_id, temperature);
+			deviceId, temperature);
 
 	snprintf(pubString, MQTT_PAYLOAD_SIZE,
  8002c6c:	4807      	ldr	r0, [pc, #28]	; (8002c8c <createPubMQTTString+0x44>)
@@ -8205,7 +8206,7 @@ void updateRootCert(void) {
  8002cc6:	490d      	ldr	r1, [pc, #52]	; (8002cfc <updateRootCert+0x3c>)
  8002cc8:	f240 520e 	movw	r2, #1294	; 0x50e
  8002ccc:	f001 faf2 	bl	80042b4 <siprintf>
-			strlen(DigiCertGlobalRootG2));
+			strlen(digiCertGlobalRootG2));
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
  8002cd0:	480b      	ldr	r0, [pc, #44]	; (8002d00 <updateRootCert+0x40>)
  8002cd2:	2100      	movs	r1, #0
@@ -8217,7 +8218,7 @@ void updateRootCert(void) {
  8002ce0:	4805      	ldr	r0, [pc, #20]	; (8002cf8 <updateRootCert+0x38>)
  8002ce2:	4619      	mov	r1, r3
  8002ce4:	f000 fac0 	bl	8003268 <ATCMD_Print>
-	ATCMD_Print(DigiCertGlobalRootG2);
+	ATCMD_Print(digiCertGlobalRootG2);
  8002ce8:	4806      	ldr	r0, [pc, #24]	; (8002d04 <updateRootCert+0x44>)
  8002cea:	f000 fabd 	bl	8003268 <ATCMD_Print>
 	ATCMD_state = STATE_CONFUGURE_WLAN;
@@ -8481,7 +8482,8 @@ void publishDPSPut(void) {
  8002ea6:	2200      	movs	r2, #0
  8002ea8:	2300      	movs	r3, #0
  8002eaa:	f000 f9dd 	bl	8003268 <ATCMD_Print>
-	MQTT_NOT_RETAIN, PUB_TOPIC_DPS_PUT, pubString);
+	MQTT_NOT_RETAIN,
+	PUB_TOPIC_DPS_PUT, pubString);
 	ATCMD_state = STATE_PUB_DPS_REG_GET;
  8002eae:	4b06      	ldr	r3, [pc, #24]	; (8002ec8 <publishDPSPut+0x40>)
  8002eb0:	2208      	movs	r2, #8
@@ -8665,13 +8667,13 @@ void getAssignedHub(void) {
  8002fda:	2200      	movs	r2, #0
  8002fdc:	701a      	strb	r2, [r3, #0]
 
-		sprintf(my_ba, azureAssignedHub);
+		sprintf(myBrokerAdress, azureAssignedHub);
  8002fde:	4b0d      	ldr	r3, [pc, #52]	; (8003014 <getAssignedHub+0x90>)
  8002fe0:	681b      	ldr	r3, [r3, #0]
  8002fe2:	480d      	ldr	r0, [pc, #52]	; (8003018 <getAssignedHub+0x94>)
  8002fe4:	4619      	mov	r1, r3
  8002fe6:	f001 f965 	bl	80042b4 <siprintf>
-		sprintf(broker_userName, "%s/%s/?api-version=2021-04-12",
+		sprintf(brokerUsername, "%s/%s/?api-version=2021-04-12",
  8002fea:	4b0a      	ldr	r3, [pc, #40]	; (8003014 <getAssignedHub+0x90>)
  8002fec:	681b      	ldr	r3, [r3, #0]
  8002fee:	480b      	ldr	r0, [pc, #44]	; (800301c <getAssignedHub+0x98>)
@@ -8679,7 +8681,7 @@ void getAssignedHub(void) {
  8002ff2:	461a      	mov	r2, r3
  8002ff4:	4b0b      	ldr	r3, [pc, #44]	; (8003024 <getAssignedHub+0xa0>)
  8002ff6:	f001 f95d 	bl	80042b4 <siprintf>
-				azureAssignedHub, device_id);
+				azureAssignedHub, deviceId);
 
 	}
 
@@ -8743,7 +8745,7 @@ void reconnectCloud(void) {
  8003058:	4812      	ldr	r0, [pc, #72]	; (80030a4 <reconnectCloud+0x50>)
  800305a:	2100      	movs	r1, #0
  800305c:	f000 f904 	bl	8003268 <ATCMD_Print>
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, my_ba);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, myBrokerAdress);
  8003060:	4811      	ldr	r0, [pc, #68]	; (80030a8 <reconnectCloud+0x54>)
  8003062:	2101      	movs	r1, #1
  8003064:	4a11      	ldr	r2, [pc, #68]	; (80030ac <reconnectCloud+0x58>)
@@ -8754,12 +8756,12 @@ void reconnectCloud(void) {
  800306e:	f242 22b3 	movw	r2, #8883	; 0x22b3
  8003072:	f000 f8f9 	bl	8003268 <ATCMD_Print>
 	MQTT_BROKER_PORT);
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, device_id);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, deviceId);
  8003076:	480c      	ldr	r0, [pc, #48]	; (80030a8 <reconnectCloud+0x54>)
  8003078:	2103      	movs	r1, #3
  800307a:	4a0e      	ldr	r2, [pc, #56]	; (80030b4 <reconnectCloud+0x60>)
  800307c:	f000 f8f4 	bl	8003268 <ATCMD_Print>
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, broker_userName);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, brokerUsername);
  8003080:	4809      	ldr	r0, [pc, #36]	; (80030a8 <reconnectCloud+0x54>)
  8003082:	2104      	movs	r1, #4
  8003084:	4a0c      	ldr	r2, [pc, #48]	; (80030b8 <reconnectCloud+0x64>)
@@ -9297,7 +9299,7 @@ void ATCMD_Print(const char *format, ...) {
  8003374:	2300      	movs	r3, #0
  8003376:	613b      	str	r3, [r7, #16]
  8003378:	e010      	b.n	800339c <ATCMD_Print+0x134>
-		if (ok_res[ix] != ATCMD_ReceiveBuffer[ix]) {
+		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
  800337a:	4a13      	ldr	r2, [pc, #76]	; (80033c8 <ATCMD_Print+0x160>)
  800337c:	693b      	ldr	r3, [r7, #16]
  800337e:	4413      	add	r3, r2
@@ -9327,7 +9329,7 @@ void ATCMD_Print(const char *format, ...) {
  800339e:	69fb      	ldr	r3, [r7, #28]
  80033a0:	429a      	cmp	r2, r3
  80033a2:	dbea      	blt.n	800337a <ATCMD_Print+0x112>
-		if (ok_res[ix] != ATCMD_ReceiveBuffer[ix]) {
+		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
 			ATCMD_Error_Code = 1;
 			return;
 		}
@@ -9559,33 +9561,31 @@ int main(void) {
  80034b6:	b082      	sub	sp, #8
  80034b8:	af00      	add	r7, sp, #0
 
+	DAVE_STATUS_t status;
 
-    DAVE_STATUS_t status;
-
-    status = DAVE_Init(); /* Initialization of DAVE APPs */
+	status = DAVE_Init(); /* Initialization of DAVE APPs */
  80034ba:	f7ff fb01 	bl	8002ac0 <DAVE_Init>
  80034be:	4603      	mov	r3, r0
  80034c0:	71fb      	strb	r3, [r7, #7]
 
-    if (status != DAVE_STATUS_SUCCESS) {
+	if (status != DAVE_STATUS_SUCCESS) {
  80034c2:	79fb      	ldrb	r3, [r7, #7]
  80034c4:	2b00      	cmp	r3, #0
  80034c6:	d000      	beq.n	80034ca <main+0x16>
-        /* Placeholder for error handler code. The while loop below can be replaced with a user error handler. */
-        XMC_DEBUG("DAVE APPs initialization failed\n");
+		/* Placeholder for error handler code. The while loop below can be replaced with a user error handler. */
+		XMC_DEBUG("DAVE APPs initialization failed\n");
 
-        while (1U) {
-        }
+		while (1U) {
+		}
  80034c8:	e7fe      	b.n	80034c8 <main+0x14>
-    }
+	}
 
+	while (1U) {
 
-    while (1U) {
-
-    	ATCMD_Task();
+		ATCMD_Task();
  80034ca:	f7ff fe69 	bl	80031a0 <ATCMD_Task>
 
-    }
+	}
  80034ce:	e7fc      	b.n	80034ca <main+0x16>
 
 080034d0 <__aeabi_drsub>:
@@ -14054,7 +14054,7 @@ int main(void) {
  8006110:	000d 0000 0230 0101 0000 0001 0000 0000     ....0...........
  8006120:	0000 0001 0102 0101                         ........
 
-08006128 <DigiCertGlobalRootG2>:
+08006128 <digiCertGlobalRootG2>:
  8006128:	2d2d 2d2d 422d 4745 4e49 4320 5245 4954     -----BEGIN CERTI
  8006138:	4946 4143 4554 2d2d 2d2d 0a2d 494d 4449     FICATE-----.MIID
  8006148:	6a6a 4343 6e41 6761 7741 4249 6741 5149     jjCCAnagAwIBAgIQ
@@ -14137,7 +14137,7 @@ int main(void) {
  8006618:	5972 0a3d 2d2d 2d2d 452d 444e 4320 5245     rY=.-----END CER
  8006628:	4954 4946 4143 4554 2d2d 2d2d 0a2d 0000     TIFICATE-----...
 
-08006638 <ok_res>:
+08006638 <okResponse>:
  8006638:	4b4f 0a0d 003e 0000 5441 4d2b 5451 5054     OK..>...AT+MQTTP
  8006648:	4255 303d 302c 302c 222c 6564 6976 6563     UB=0,0,0,"device
  8006658:	2f73 7325 6d2f 7365 6173 6567 2f73 7665     s/%s/messages/ev

@@ -11,7 +11,7 @@
 /*
  * Root certificate for secure communication
  */
-const char DigiCertGlobalRootG2[] = CERT;
+const char digiCertGlobalRootG2[] = CERT;
 
 /*
  * Buffers for AT commands and MQTT-related data
@@ -27,12 +27,12 @@ char buffer[2048];
 char *resultPtrMQTTPUB;
 char *operationID;
 char *azureAssignedHub;
-char my_ba[75] = MY_BROKER_ADRESS;
-char device_id[50] = CLIENT_ID;
-char broker_userName[150] = BROKER_USER_NAME;
+char myBrokerAdress[75] = MY_BROKER_ADRESS;
+char deviceId[50] = CLIENT_ID;
+char brokerUsername[150] = BROKER_USER_NAME;
 char pubString[MQTT_PAYLOAD_SIZE];
 char bufferPayload[MQTT_PAYLOAD_SIZE];
-const char ok_res[] = "OK\r\n>";
+const char okResponse[] = "OK\r\n>";
 
 /*
  * Enumeration to represent different states in the state machine
@@ -50,9 +50,10 @@ void createPubMQTTString() {
 
 	double temperature = generateRandomTemperature();
 
-	snprintf(bufferPayload, MQTT_PAYLOAD_SIZE,
+	snprintf(bufferPayload,
+	MQTT_PAYLOAD_SIZE,
 			"AT+MQTTPUB=0,0,0,\""PUB_TOPIC_TELEMETRY"\",\""PUB_TELEMETRY_TEMPERATURE"\"\r\n",
-			device_id, temperature);
+			deviceId, temperature);
 
 	snprintf(pubString, MQTT_PAYLOAD_SIZE,
 			"{\\\"payload\\\" : {\\\"modelId\\\" : \\\"%s\\\"}}", MODEL_ID);
@@ -78,10 +79,10 @@ void initModule(void) {
  */
 void updateRootCert(void) {
 	sprintf(buffer, "AT+LOADCERT=%d,\"DigiCertGlobalRootG2\"\r\n",
-			strlen(DigiCertGlobalRootG2));
+			strlen(digiCertGlobalRootG2));
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print((char*) buffer, strlen(buffer));
-	ATCMD_Print(DigiCertGlobalRootG2);
+	ATCMD_Print(digiCertGlobalRootG2);
 	ATCMD_state = STATE_CONFUGURE_WLAN;
 
 }
@@ -170,7 +171,8 @@ void publishDPSPut(void) {
 	createPubMQTTString();
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
-	MQTT_NOT_RETAIN, PUB_TOPIC_DPS_PUT, pubString);
+	MQTT_NOT_RETAIN,
+	PUB_TOPIC_DPS_PUT, pubString);
 	ATCMD_state = STATE_PUB_DPS_REG_GET;
 }
 /*
@@ -224,9 +226,9 @@ void getAssignedHub(void) {
 		azureAssignedHub += strlen("\"assignedHub\":\"");
 		*(strstr(azureAssignedHub, "\"")) = 0;
 
-		sprintf(my_ba, azureAssignedHub);
-		sprintf(broker_userName, "%s/%s/?api-version=2021-04-12",
-				azureAssignedHub, device_id);
+		sprintf(myBrokerAdress, azureAssignedHub);
+		sprintf(brokerUsername, "%s/%s/?api-version=2021-04-12",
+				azureAssignedHub, deviceId);
 
 	}
 
@@ -251,11 +253,11 @@ void disconnectMQTT(void) {
  */
 void reconnectCloud(void) {
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, my_ba);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, myBrokerAdress);
 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
 	MQTT_BROKER_PORT);
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, device_id);
-	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, broker_userName);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, deviceId);
+	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, brokerUsername);
 
 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
@@ -459,7 +461,7 @@ void ATCMD_Print(const char *format, ...) {
 
 	// MVo: check only for length of received string
 	for (int ix = 0; ix < ret_length; ix++) {
-		if (ok_res[ix] != ATCMD_ReceiveBuffer[ix]) {
+		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
 			ATCMD_Error_Code = 1;
 			return;
 		}
