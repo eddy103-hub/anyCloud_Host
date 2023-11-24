@@ -469,38 +469,39 @@
  248 0002 00AF     	 add r7,sp,#0
  249              	.LCFI8:
  250              	 .cfi_def_cfa_register 7
-  81:../at_commander.c **** 	sprintf(buffer, "AT+LOADCERT=%d,\"DigiCertGlobalRootG2\"\r\n",
- 251              	 .loc 1 81 0
+  81:../at_commander.c **** 
+  82:../at_commander.c **** 	sprintf(buffer, "AT+LOADCERT=%d,\"DigiCertGlobalRootG2\"\r\n",
+ 251              	 .loc 1 82 0
  252 0004 0C48     	 ldr r0,.L8
  253 0006 0D49     	 ldr r1,.L8+4
  254 0008 40F20E52 	 movw r2,#1294
  255 000c FFF7FEFF 	 bl sprintf
-  82:../at_commander.c **** 			strlen(digiCertGlobalRootG2));
-  83:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 256              	 .loc 1 83 0
+  83:../at_commander.c **** 			strlen(digiCertGlobalRootG2));
+  84:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 256              	 .loc 1 84 0
  257 0010 0B48     	 ldr r0,.L8+8
  258 0012 0021     	 movs r1,#0
  259 0014 FFF7FEFF 	 bl ATCMD_Print
-  84:../at_commander.c **** 	ATCMD_Print((char*) buffer, strlen(buffer));
- 260              	 .loc 1 84 0
+  85:../at_commander.c **** 	ATCMD_Print((char*) buffer, strlen(buffer));
+ 260              	 .loc 1 85 0
  261 0018 0748     	 ldr r0,.L8
  262 001a FFF7FEFF 	 bl strlen
  263 001e 0346     	 mov r3,r0
  264 0020 0548     	 ldr r0,.L8
  265 0022 1946     	 mov r1,r3
  266 0024 FFF7FEFF 	 bl ATCMD_Print
-  85:../at_commander.c **** 	ATCMD_Print(digiCertGlobalRootG2);
- 267              	 .loc 1 85 0
+  86:../at_commander.c **** 	ATCMD_Print(digiCertGlobalRootG2);
+ 267              	 .loc 1 86 0
  268 0028 0648     	 ldr r0,.L8+12
  269 002a FFF7FEFF 	 bl ATCMD_Print
-  86:../at_commander.c **** 	ATCMD_state = STATE_CONFUGURE_WLAN;
- 270              	 .loc 1 86 0
+  87:../at_commander.c **** 	ATCMD_state = STATE_CONFUGURE_WLAN;
+ 270              	 .loc 1 87 0
  271 002e 064B     	 ldr r3,.L8+16
  272 0030 0222     	 movs r2,#2
  273 0032 1A70     	 strb r2,[r3]
-  87:../at_commander.c **** 
-  88:../at_commander.c **** }
- 274              	 .loc 1 88 0
+  88:../at_commander.c **** 
+  89:../at_commander.c **** }
+ 274              	 .loc 1 89 0
  275 0034 80BD     	 pop {r7,pc}
  276              	.L9:
  277 0036 00BF     	 .align 2
@@ -549,14 +550,14 @@
  307              	 .thumb_func
  309              	configureWLAN:
  310              	.LFB346:
-  89:../at_commander.c **** 
-  90:../at_commander.c **** /*
-  91:../at_commander.c ****  * Function: configureWLAN
-  92:../at_commander.c ****  * -----------------------
-  93:../at_commander.c ****  * Configures WLAN settings, such as SSID, security type, password, NTP server, and channel.
-  94:../at_commander.c ****  */
-  95:../at_commander.c **** void configureWLAN(void) {
- 311              	 .loc 1 95 0
+  90:../at_commander.c **** 
+  91:../at_commander.c **** /*
+  92:../at_commander.c ****  * Function: configureWLAN
+  93:../at_commander.c ****  * -----------------------
+  94:../at_commander.c ****  * Configures WLAN settings, such as SSID, security type, password, NTP server, and channel.
+  95:../at_commander.c ****  */
+  96:../at_commander.c **** void configureWLAN(void) {
+ 311              	 .loc 1 96 0
  312              	 .cfi_startproc
  313              	 
  314              	 
@@ -568,54 +569,56 @@
  320 0002 00AF     	 add r7,sp,#0
  321              	.LCFI10:
  322              	 .cfi_def_cfa_register 7
-  96:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 323              	 .loc 1 96 0
+  97:../at_commander.c **** 
+  98:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 323              	 .loc 1 98 0
  324 0004 1248     	 ldr r0,.L11
  325 0006 0021     	 movs r1,#0
  326 0008 FFF7FEFF 	 bl ATCMD_Print
-  97:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_SSID, MY_AP);
- 327              	 .loc 1 97 0
+  99:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_SSID, MY_AP);
+ 327              	 .loc 1 99 0
  328 000c 1148     	 ldr r0,.L11+4
  329 000e 0121     	 movs r1,#1
  330 0010 114A     	 ldr r2,.L11+8
  331 0012 FFF7FEFF 	 bl ATCMD_Print
-  98:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_SEC_TYPE, PAR_SEC_TYPE_WPA2);
- 332              	 .loc 1 98 0
+ 100:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_SEC_TYPE, PAR_SEC_TYPE_WPA2);
+ 332              	 .loc 1 100 0
  333 0016 1148     	 ldr r0,.L11+12
  334 0018 0221     	 movs r1,#2
  335 001a 0322     	 movs r2,#3
  336 001c FFF7FEFF 	 bl ATCMD_Print
-  99:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_CREDENTIALS, MY_PASSWORD);
- 337              	 .loc 1 99 0
+ 101:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_CREDENTIALS, MY_PASSWORD);
+ 337              	 .loc 1 101 0
  338 0020 0C48     	 ldr r0,.L11+4
  339 0022 0321     	 movs r1,#3
  340 0024 0E4A     	 ldr r2,.L11+16
  341 0026 FFF7FEFF 	 bl ATCMD_Print
- 100:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_CHANNEL, PAR_ANY_CHANNEL);
- 342              	 .loc 1 100 0
+ 102:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_CHANNEL, PAR_ANY_CHANNEL);
+ 342              	 .loc 1 102 0
  343 002a 0C48     	 ldr r0,.L11+12
  344 002c 0421     	 movs r1,#4
  345 002e FF22     	 movs r2,#255
  346 0030 FFF7FEFF 	 bl ATCMD_Print
- 101:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_NTP_SVR, NTP_SERVER);
- 347              	 .loc 1 101 0
+ 103:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_NTP_SVR, NTP_SERVER);
+ 347              	 .loc 1 103 0
  348 0034 0748     	 ldr r0,.L11+4
  349 0036 0C21     	 movs r1,#12
  350 0038 0A4A     	 ldr r2,.L11+20
  351 003a FFF7FEFF 	 bl ATCMD_Print
- 102:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_NTP_STATIC, PAR_NTP_STATIC);
- 352              	 .loc 1 102 0
+ 104:../at_commander.c **** 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_NTP_STATIC, PAR_NTP_STATIC);
+ 352              	 .loc 1 104 0
  353 003e 0748     	 ldr r0,.L11+12
  354 0040 0D21     	 movs r1,#13
  355 0042 0122     	 movs r2,#1
  356 0044 FFF7FEFF 	 bl ATCMD_Print
- 103:../at_commander.c **** 	ATCMD_state = STATE_START_WLAN;
- 357              	 .loc 1 103 0
+ 105:../at_commander.c **** 	ATCMD_state = STATE_START_WLAN;
+ 357              	 .loc 1 105 0
  358 0048 074B     	 ldr r3,.L11+24
  359 004a 0322     	 movs r2,#3
  360 004c 1A70     	 strb r2,[r3]
- 104:../at_commander.c **** }
- 361              	 .loc 1 104 0
+ 106:../at_commander.c **** 
+ 107:../at_commander.c **** }
+ 361              	 .loc 1 107 0
  362 004e 80BD     	 pop {r7,pc}
  363              	.L12:
  364              	 .align 2
@@ -643,13 +646,13 @@
  384              	 .thumb_func
  386              	startWLAN:
  387              	.LFB347:
- 105:../at_commander.c **** /*
- 106:../at_commander.c ****  * Function: startWLAN
- 107:../at_commander.c ****  * -------------------
- 108:../at_commander.c ****  * Initiates the WLAN connection using the configured parameters.
- 109:../at_commander.c ****  */
- 110:../at_commander.c **** void startWLAN(void) {
- 388              	 .loc 1 110 0
+ 108:../at_commander.c **** /*
+ 109:../at_commander.c ****  * Function: startWLAN
+ 110:../at_commander.c ****  * -------------------
+ 111:../at_commander.c ****  * Initiates the WLAN connection using the configured parameters.
+ 112:../at_commander.c ****  */
+ 113:../at_commander.c **** void startWLAN(void) {
+ 388              	 .loc 1 113 0
  389              	 .cfi_startproc
  390              	 
  391              	 
@@ -661,30 +664,31 @@
  397 0002 00AF     	 add r7,sp,#0
  398              	.LCFI12:
  399              	 .cfi_def_cfa_register 7
- 111:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 400              	 .loc 1 111 0
+ 114:../at_commander.c **** 
+ 115:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 400              	 .loc 1 115 0
  401 0004 0748     	 ldr r0,.L14
  402 0006 0021     	 movs r1,#0
  403 0008 FFF7FEFF 	 bl ATCMD_Print
- 112:../at_commander.c **** 	ATCMD_Print("AT+WSTA=%d\r\n", PAR_USE_CONFIGURATION);
- 404              	 .loc 1 112 0
+ 116:../at_commander.c **** 	ATCMD_Print("AT+WSTA=%d\r\n", PAR_USE_CONFIGURATION);
+ 404              	 .loc 1 116 0
  405 000c 0648     	 ldr r0,.L14+4
  406 000e 0121     	 movs r1,#1
  407 0010 FFF7FEFF 	 bl ATCMD_Print
- 113:../at_commander.c **** 	ATCMD_ReadLine();
- 408              	 .loc 1 113 0
+ 117:../at_commander.c **** 	ATCMD_ReadLine();
+ 408              	 .loc 1 117 0
  409 0014 FFF7FEFF 	 bl ATCMD_ReadLine
- 114:../at_commander.c **** 	ATCMD_ReadLine();
- 410              	 .loc 1 114 0
+ 118:../at_commander.c **** 	ATCMD_ReadLine();
+ 410              	 .loc 1 118 0
  411 0018 FFF7FEFF 	 bl ATCMD_ReadLine
- 115:../at_commander.c **** 	ATCMD_state = STATE_WAIT_FOR_AP_CONNECT;
- 412              	 .loc 1 115 0
+ 119:../at_commander.c **** 	ATCMD_state = STATE_WAIT_FOR_AP_CONNECT;
+ 412              	 .loc 1 119 0
  413 001c 034B     	 ldr r3,.L14+8
  414 001e 0422     	 movs r2,#4
  415 0020 1A70     	 strb r2,[r3]
- 116:../at_commander.c **** 
- 117:../at_commander.c **** }
- 416              	 .loc 1 117 0
+ 120:../at_commander.c **** 
+ 121:../at_commander.c **** }
+ 416              	 .loc 1 121 0
  417 0022 80BD     	 pop {r7,pc}
  418              	.L15:
  419              	 .align 2
@@ -712,14 +716,14 @@
  438              	 .thumb_func
  440              	waitForAPConnect:
  441              	.LFB348:
- 118:../at_commander.c **** 
- 119:../at_commander.c **** /*
- 120:../at_commander.c ****  * Function: waitForAPConnect
- 121:../at_commander.c ****  * --------------------------
- 122:../at_commander.c ****  * Checks the status of the WLAN connection and transitions to the next state if connected.
- 123:../at_commander.c ****  */
- 124:../at_commander.c **** void waitForAPConnect(void) {
- 442              	 .loc 1 124 0
+ 122:../at_commander.c **** 
+ 123:../at_commander.c **** /*
+ 124:../at_commander.c ****  * Function: waitForAPConnect
+ 125:../at_commander.c ****  * --------------------------
+ 126:../at_commander.c ****  * Checks the status of the WLAN connection and transitions to the next state if connected.
+ 127:../at_commander.c ****  */
+ 128:../at_commander.c **** void waitForAPConnect(void) {
+ 442              	 .loc 1 128 0
  443              	 .cfi_startproc
  444              	 
  445              	 
@@ -731,36 +735,37 @@
  451 0002 00AF     	 add r7,sp,#0
  452              	.LCFI14:
  453              	 .cfi_def_cfa_register 7
- 125:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 454              	 .loc 1 125 0
+ 129:../at_commander.c **** 
+ 130:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 454              	 .loc 1 130 0
  455 0004 0948     	 ldr r0,.L18
  456 0006 0021     	 movs r1,#0
  457 0008 FFF7FEFF 	 bl ATCMD_Print
- 126:../at_commander.c **** 	ATCMD_Print("AT+WSTA\r\n");
- 458              	 .loc 1 126 0
+ 131:../at_commander.c **** 	ATCMD_Print("AT+WSTA\r\n");
+ 458              	 .loc 1 131 0
  459 000c 0848     	 ldr r0,.L18+4
  460 000e FFF7FEFF 	 bl ATCMD_Print
- 127:../at_commander.c **** 	ATCMD_ReadLine();
- 461              	 .loc 1 127 0
+ 132:../at_commander.c **** 	ATCMD_ReadLine();
+ 461              	 .loc 1 132 0
  462 0012 FFF7FEFF 	 bl ATCMD_ReadLine
- 128:../at_commander.c **** 	if (ATCMD_strcon(ATCMD_ReceiveBuffer, "+WSTALD\r\n") != 1) {
- 463              	 .loc 1 128 0
+ 133:../at_commander.c **** 	if (ATCMD_strcon(ATCMD_ReceiveBuffer, "+WSTALD\r\n") != 1) {
+ 463              	 .loc 1 133 0
  464 0016 0748     	 ldr r0,.L18+8
  465 0018 0749     	 ldr r1,.L18+12
  466 001a FFF7FEFF 	 bl ATCMD_strcon
  467 001e 0346     	 mov r3,r0
  468 0020 012B     	 cmp r3,#1
  469 0022 02D0     	 beq .L16
- 129:../at_commander.c **** 		ATCMD_state = STATE_CONFIGURE_CLOUD;
- 470              	 .loc 1 129 0
+ 134:../at_commander.c **** 		ATCMD_state = STATE_CONFIGURE_CLOUD;
+ 470              	 .loc 1 134 0
  471 0024 054B     	 ldr r3,.L18+16
  472 0026 0522     	 movs r2,#5
  473 0028 1A70     	 strb r2,[r3]
  474              	.L16:
- 130:../at_commander.c **** 	}
- 131:../at_commander.c **** 
- 132:../at_commander.c **** }
- 475              	 .loc 1 132 0
+ 135:../at_commander.c **** 	}
+ 136:../at_commander.c **** 
+ 137:../at_commander.c **** }
+ 475              	 .loc 1 137 0
  476 002a 80BD     	 pop {r7,pc}
  477              	.L19:
  478              	 .align 2
@@ -827,14 +832,14 @@
  512              	 .thumb_func
  514              	configureCloud:
  515              	.LFB349:
- 133:../at_commander.c **** 
- 134:../at_commander.c **** /*
- 135:../at_commander.c ****  * Function: configureCloud
- 136:../at_commander.c ****  * ------------------------
- 137:../at_commander.c ****  * Configures cloud-related parameters, such as MQTT broker address, port, client ID, and username.
- 138:../at_commander.c ****  */
- 139:../at_commander.c **** void configureCloud(void) {
- 516              	 .loc 1 139 0
+ 138:../at_commander.c **** 
+ 139:../at_commander.c **** /*
+ 140:../at_commander.c ****  * Function: configureCloud
+ 141:../at_commander.c ****  * ------------------------
+ 142:../at_commander.c ****  * Configures cloud-related parameters, such as MQTT broker address, port, client ID, and username.
+ 143:../at_commander.c ****  */
+ 144:../at_commander.c **** void configureCloud(void) {
+ 516              	 .loc 1 144 0
  517              	 .cfi_startproc
  518              	 
  519              	 
@@ -846,57 +851,59 @@
  525 0002 00AF     	 add r7,sp,#0
  526              	.LCFI16:
  527              	 .cfi_def_cfa_register 7
- 140:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 528              	 .loc 1 140 0
+ 145:../at_commander.c **** 
+ 146:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 528              	 .loc 1 146 0
  529 0004 1248     	 ldr r0,.L21
  530 0006 0021     	 movs r1,#0
  531 0008 FFF7FEFF 	 bl ATCMD_Print
- 141:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR,
- 532              	 .loc 1 141 0
+ 147:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR,
+ 532              	 .loc 1 147 0
  533 000c 1148     	 ldr r0,.L21+4
  534 000e 0121     	 movs r1,#1
  535 0010 114A     	 ldr r2,.L21+8
  536 0012 FFF7FEFF 	 bl ATCMD_Print
- 142:../at_commander.c **** 	MY_BROKER_ADRESS);
- 143:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
- 537              	 .loc 1 143 0
+ 148:../at_commander.c **** 	MY_BROKER_ADRESS);
+ 149:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
+ 537              	 .loc 1 149 0
  538 0016 1148     	 ldr r0,.L21+12
  539 0018 0221     	 movs r1,#2
  540 001a 42F2B322 	 movw r2,#8883
  541 001e FFF7FEFF 	 bl ATCMD_Print
- 144:../at_commander.c **** 	MQTT_BROKER_PORT);
- 145:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, CLIENT_ID);
- 542              	 .loc 1 145 0
+ 150:../at_commander.c **** 	MQTT_BROKER_PORT);
+ 151:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, CLIENT_ID);
+ 542              	 .loc 1 151 0
  543 0022 0C48     	 ldr r0,.L21+4
  544 0024 0321     	 movs r1,#3
  545 0026 0E4A     	 ldr r2,.L21+16
  546 0028 FFF7FEFF 	 bl ATCMD_Print
- 146:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME,
- 547              	 .loc 1 146 0
+ 152:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME,
+ 547              	 .loc 1 152 0
  548 002c 0948     	 ldr r0,.L21+4
  549 002e 0421     	 movs r1,#4
  550 0030 0C4A     	 ldr r2,.L21+20
  551 0032 FFF7FEFF 	 bl ATCMD_Print
- 147:../at_commander.c **** 	BROKER_USER_NAME);
- 148:../at_commander.c **** 
- 149:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
- 552              	 .loc 1 149 0
+ 153:../at_commander.c **** 	BROKER_USER_NAME);
+ 154:../at_commander.c **** 
+ 155:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
+ 552              	 .loc 1 155 0
  553 0036 0948     	 ldr r0,.L21+12
  554 0038 0721     	 movs r1,#7
  555 003a 0122     	 movs r2,#1
  556 003c FFF7FEFF 	 bl ATCMD_Print
- 150:../at_commander.c **** 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
- 557              	 .loc 1 150 0
+ 156:../at_commander.c **** 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
+ 557              	 .loc 1 156 0
  558 0040 0948     	 ldr r0,.L21+24
  559 0042 0121     	 movs r1,#1
  560 0044 FFF7FEFF 	 bl ATCMD_Print
- 151:../at_commander.c **** 	ATCMD_state = STATE_SUB_DPS;
- 561              	 .loc 1 151 0
+ 157:../at_commander.c **** 	ATCMD_state = STATE_SUB_DPS;
+ 561              	 .loc 1 157 0
  562 0048 084B     	 ldr r3,.L21+28
  563 004a 0622     	 movs r2,#6
  564 004c 1A70     	 strb r2,[r3]
- 152:../at_commander.c **** }
- 565              	 .loc 1 152 0
+ 158:../at_commander.c **** 
+ 159:../at_commander.c **** }
+ 565              	 .loc 1 159 0
  566 004e 80BD     	 pop {r7,pc}
  567              	.L22:
  568              	 .align 2
@@ -933,13 +940,13 @@
  592              	 .thumb_func
  594              	subscribeDPS:
  595              	.LFB350:
- 153:../at_commander.c **** /*
- 154:../at_commander.c ****  * Function: subscribeDPS
- 155:../at_commander.c ****  * ----------------------
- 156:../at_commander.c ****  * Subscribes to the DPS registration topic.
- 157:../at_commander.c ****  */
- 158:../at_commander.c **** void subscribeDPS(void) {
- 596              	 .loc 1 158 0
+ 160:../at_commander.c **** /*
+ 161:../at_commander.c ****  * Function: subscribeDPS
+ 162:../at_commander.c ****  * ----------------------
+ 163:../at_commander.c ****  * Subscribes to the DPS registration topic.
+ 164:../at_commander.c ****  */
+ 165:../at_commander.c **** void subscribeDPS(void) {
+ 596              	 .loc 1 165 0
  597              	 .cfi_startproc
  598              	 
  599              	 
@@ -951,26 +958,27 @@
  605 0002 00AF     	 add r7,sp,#0
  606              	.LCFI18:
  607              	 .cfi_def_cfa_register 7
- 159:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 608              	 .loc 1 159 0
+ 166:../at_commander.c **** 
+ 167:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 608              	 .loc 1 167 0
  609 0004 0648     	 ldr r0,.L24
  610 0006 0021     	 movs r1,#0
  611 0008 FFF7FEFF 	 bl ATCMD_Print
- 160:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", SUB_DPS_REGISTRATION_TOPIC,
- 612              	 .loc 1 160 0
+ 168:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", SUB_DPS_REGISTRATION_TOPIC,
+ 612              	 .loc 1 168 0
  613 000c 0548     	 ldr r0,.L24+4
  614 000e 0649     	 ldr r1,.L24+8
  615 0010 0022     	 movs r2,#0
  616 0012 FFF7FEFF 	 bl ATCMD_Print
- 161:../at_commander.c **** 	MQTT_QOS);
- 162:../at_commander.c **** 	ATCMD_state = STATE_PUB_DPS_REG_PUT;
- 617              	 .loc 1 162 0
+ 169:../at_commander.c **** 	MQTT_QOS);
+ 170:../at_commander.c **** 	ATCMD_state = STATE_PUB_DPS_REG_PUT;
+ 617              	 .loc 1 170 0
  618 0016 054B     	 ldr r3,.L24+12
  619 0018 0722     	 movs r2,#7
  620 001a 1A70     	 strb r2,[r3]
- 163:../at_commander.c **** 
- 164:../at_commander.c **** }
- 621              	 .loc 1 164 0
+ 171:../at_commander.c **** 
+ 172:../at_commander.c **** }
+ 621              	 .loc 1 172 0
  622 001c 80BD     	 pop {r7,pc}
  623              	.L25:
  624 001e 00BF     	 .align 2
@@ -1003,13 +1011,13 @@
  644              	 .thumb_func
  646              	publishDPSPut:
  647              	.LFB351:
- 165:../at_commander.c **** /*
- 166:../at_commander.c ****  * Function: publishDPSPut
- 167:../at_commander.c ****  * ------------------------
- 168:../at_commander.c ****  * Publishes a message to the DPS PUT topic with a formatted payload.
- 169:../at_commander.c ****  */
- 170:../at_commander.c **** void publishDPSPut(void) {
- 648              	 .loc 1 170 0
+ 173:../at_commander.c **** /*
+ 174:../at_commander.c ****  * Function: publishDPSPut
+ 175:../at_commander.c ****  * ------------------------
+ 176:../at_commander.c ****  * Publishes a message to the DPS PUT topic with a formatted payload.
+ 177:../at_commander.c ****  */
+ 178:../at_commander.c **** void publishDPSPut(void) {
+ 648              	 .loc 1 178 0
  649              	 .cfi_startproc
  650              	 
  651              	 
@@ -1024,16 +1032,17 @@
  660 0004 02AF     	 add r7,sp,#8
  661              	.LCFI21:
  662              	 .cfi_def_cfa 7,8
- 171:../at_commander.c **** 	createPubMQTTString();
- 663              	 .loc 1 171 0
+ 179:../at_commander.c **** 
+ 180:../at_commander.c **** 	createPubMQTTString();
+ 663              	 .loc 1 180 0
  664 0006 FFF7FEFF 	 bl createPubMQTTString
- 172:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 665              	 .loc 1 172 0
+ 181:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 665              	 .loc 1 181 0
  666 000a 0948     	 ldr r0,.L27
  667 000c 0021     	 movs r1,#0
  668 000e FFF7FEFF 	 bl ATCMD_Print
- 173:../at_commander.c **** 	ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
- 669              	 .loc 1 173 0
+ 182:../at_commander.c **** 	ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
+ 669              	 .loc 1 182 0
  670 0012 084B     	 ldr r3,.L27+4
  671 0014 0093     	 str r3,[sp]
  672 0016 084B     	 ldr r3,.L27+8
@@ -1043,15 +1052,16 @@
  676 001e 0022     	 movs r2,#0
  677 0020 0023     	 movs r3,#0
  678 0022 FFF7FEFF 	 bl ATCMD_Print
- 174:../at_commander.c **** 	MQTT_NOT_RETAIN,
- 175:../at_commander.c **** 	PUB_TOPIC_DPS_PUT, pubString);
- 176:../at_commander.c **** 	ATCMD_state = STATE_PUB_DPS_REG_GET;
- 679              	 .loc 1 176 0
+ 183:../at_commander.c **** 	MQTT_NOT_RETAIN,
+ 184:../at_commander.c **** 	PUB_TOPIC_DPS_PUT, pubString);
+ 185:../at_commander.c **** 	ATCMD_state = STATE_PUB_DPS_REG_GET;
+ 679              	 .loc 1 185 0
  680 0026 064B     	 ldr r3,.L27+16
  681 0028 0822     	 movs r2,#8
  682 002a 1A70     	 strb r2,[r3]
- 177:../at_commander.c **** }
- 683              	 .loc 1 177 0
+ 186:../at_commander.c **** 
+ 187:../at_commander.c **** }
+ 683              	 .loc 1 187 0
  684 002c BD46     	 mov sp,r7
  685              	.LCFI22:
  686              	 .cfi_def_cfa_register 13
@@ -1105,13 +1115,13 @@
  719              	 .thumb_func
  721              	publishDPSGet:
  722              	.LFB352:
- 178:../at_commander.c **** /*
- 179:../at_commander.c ****  * Function: publishDPSGet
- 180:../at_commander.c ****  * ------------------------
- 181:../at_commander.c ****  * Publishes a message to the DPS GET topic based on the response from the DPS PUT operation.
- 182:../at_commander.c ****  */
- 183:../at_commander.c **** void publishDPSGet(void) {
- 723              	 .loc 1 183 0
+ 188:../at_commander.c **** /*
+ 189:../at_commander.c ****  * Function: publishDPSGet
+ 190:../at_commander.c ****  * ------------------------
+ 191:../at_commander.c ****  * Publishes a message to the DPS GET topic based on the response from the DPS PUT operation.
+ 192:../at_commander.c ****  */
+ 193:../at_commander.c **** void publishDPSGet(void) {
+ 723              	 .loc 1 193 0
  724              	 .cfi_startproc
  725              	 
  726              	 
@@ -1123,36 +1133,36 @@
  732 0002 00AF     	 add r7,sp,#0
  733              	.LCFI24:
  734              	 .cfi_def_cfa_register 7
- 184:../at_commander.c **** 
- 185:../at_commander.c **** 	// Assuming ATCMD_ReceiveBuffer contains the received MQTT publish response
- 186:../at_commander.c **** 	resultPtrMQTTPUB = strstr(ATCMD_ReceiveBuffer, "+MQTTPUB:");
- 735              	 .loc 1 186 0
+ 194:../at_commander.c **** 
+ 195:../at_commander.c **** 	// Assuming ATCMD_ReceiveBuffer contains the received MQTT publish response
+ 196:../at_commander.c **** 	resultPtrMQTTPUB = strstr(ATCMD_ReceiveBuffer, "+MQTTPUB:");
+ 735              	 .loc 1 196 0
  736 0004 2248     	 ldr r0,.L32
  737 0006 2349     	 ldr r1,.L32+4
  738 0008 FFF7FEFF 	 bl strstr
  739 000c 0246     	 mov r2,r0
  740 000e 224B     	 ldr r3,.L32+8
  741 0010 1A60     	 str r2,[r3]
- 187:../at_commander.c **** 	if (resultPtrMQTTPUB != NULL) {
- 742              	 .loc 1 187 0
+ 197:../at_commander.c **** 	if (resultPtrMQTTPUB != NULL) {
+ 742              	 .loc 1 197 0
  743 0012 214B     	 ldr r3,.L32+8
  744 0014 1B68     	 ldr r3,[r3]
  745 0016 002B     	 cmp r3,#0
  746 0018 04D0     	 beq .L30
- 188:../at_commander.c **** 		// Move the pointer to the beginning of the MQTT publish response
- 189:../at_commander.c **** 		resultPtrMQTTPUB += strlen("+MQTTPUB:");
- 747              	 .loc 1 189 0
+ 198:../at_commander.c **** 		// Move the pointer to the beginning of the MQTT publish response
+ 199:../at_commander.c **** 		resultPtrMQTTPUB += strlen("+MQTTPUB:");
+ 747              	 .loc 1 199 0
  748 001a 1F4B     	 ldr r3,.L32+8
  749 001c 1B68     	 ldr r3,[r3]
  750 001e 0933     	 adds r3,r3,#9
  751 0020 1D4A     	 ldr r2,.L32+8
  752 0022 1360     	 str r3,[r2]
  753              	.L30:
- 190:../at_commander.c **** 
- 191:../at_commander.c **** 	}
- 192:../at_commander.c **** 
- 193:../at_commander.c **** 	if ((operationID = strstr(resultPtrMQTTPUB, "\"operationId\":\""))) {
- 754              	 .loc 1 193 0
+ 200:../at_commander.c **** 
+ 201:../at_commander.c **** 	}
+ 202:../at_commander.c **** 
+ 203:../at_commander.c **** 	if ((operationID = strstr(resultPtrMQTTPUB, "\"operationId\":\""))) {
+ 754              	 .loc 1 203 0
  755 0024 1C4B     	 ldr r3,.L32+8
  756 0026 1B68     	 ldr r3,[r3]
  757 0028 1846     	 mov r0,r3
@@ -1165,15 +1175,15 @@
  764 0038 1B68     	 ldr r3,[r3]
  765 003a 002B     	 cmp r3,#0
  766 003c 27D0     	 beq .L29
- 194:../at_commander.c **** 		operationID += strlen("\"operationId\":\"");
- 767              	 .loc 1 194 0
+ 204:../at_commander.c **** 		operationID += strlen("\"operationId\":\"");
+ 767              	 .loc 1 204 0
  768 003e 184B     	 ldr r3,.L32+16
  769 0040 1B68     	 ldr r3,[r3]
  770 0042 0F33     	 adds r3,r3,#15
  771 0044 164A     	 ldr r2,.L32+16
  772 0046 1360     	 str r3,[r2]
- 195:../at_commander.c **** 		*(strstr(operationID, "\"")) = 0;
- 773              	 .loc 1 195 0
+ 205:../at_commander.c **** 		*(strstr(operationID, "\"")) = 0;
+ 773              	 .loc 1 205 0
  774 0048 154B     	 ldr r3,.L32+16
  775 004a 1B68     	 ldr r3,[r3]
  776 004c 1846     	 mov r0,r3
@@ -1182,29 +1192,29 @@
  779 0054 0346     	 mov r3,r0
  780 0056 0022     	 movs r2,#0
  781 0058 1A70     	 strb r2,[r3]
- 196:../at_commander.c **** 		sprintf(buffer, "AT+MQTTPUB=0,0,0,\""PUB_TOPIC_DPS_GET"\",\"""\"\r\n",
- 782              	 .loc 1 196 0
+ 206:../at_commander.c **** 		sprintf(buffer, "AT+MQTTPUB=0,0,0,\""PUB_TOPIC_DPS_GET"\",\"""\"\r\n",
+ 782              	 .loc 1 206 0
  783 005a 114B     	 ldr r3,.L32+16
  784 005c 1B68     	 ldr r3,[r3]
  785 005e 1148     	 ldr r0,.L32+20
  786 0060 1149     	 ldr r1,.L32+24
  787 0062 1A46     	 mov r2,r3
  788 0064 FFF7FEFF 	 bl sprintf
- 197:../at_commander.c **** 				operationID);
- 198:../at_commander.c **** 		ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 789              	 .loc 1 198 0
+ 207:../at_commander.c **** 				operationID);
+ 208:../at_commander.c **** 		ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 789              	 .loc 1 208 0
  790 0068 1048     	 ldr r0,.L32+28
  791 006a 0021     	 movs r1,#0
  792 006c FFF7FEFF 	 bl ATCMD_Print
- 199:../at_commander.c **** 		ATCMD_Print(buffer);
- 793              	 .loc 1 199 0
+ 209:../at_commander.c **** 		ATCMD_Print(buffer);
+ 793              	 .loc 1 209 0
  794 0070 0C48     	 ldr r0,.L32+20
  795 0072 FFF7FEFF 	 bl ATCMD_Print
- 200:../at_commander.c **** 
- 201:../at_commander.c **** 		// if Azure +MQTTPUB response does not contain "retry-after=",
- 202:../at_commander.c **** 		// move to next state, otherwise retry in 1 SECOND
- 203:../at_commander.c **** 		if (!strstr(resultPtrMQTTPUB, "retry-after="))
- 796              	 .loc 1 203 0
+ 210:../at_commander.c **** 
+ 211:../at_commander.c **** 		// if Azure +MQTTPUB response does not contain "retry-after=",
+ 212:../at_commander.c **** 		// move to next state, otherwise retry in 1 SECOND
+ 213:../at_commander.c **** 		if (!strstr(resultPtrMQTTPUB, "retry-after="))
+ 796              	 .loc 1 213 0
  797 0076 084B     	 ldr r3,.L32+8
  798 0078 1B68     	 ldr r3,[r3]
  799 007a 1846     	 mov r0,r3
@@ -1213,16 +1223,16 @@
  802 0082 0346     	 mov r3,r0
  803 0084 002B     	 cmp r3,#0
  804 0086 02D1     	 bne .L29
- 204:../at_commander.c **** 			ATCMD_state = STATE_AZURE_GET_ASSIGN_HUB;
- 805              	 .loc 1 204 0
+ 214:../at_commander.c **** 			ATCMD_state = STATE_AZURE_GET_ASSIGN_HUB;
+ 805              	 .loc 1 214 0
  806 0088 0A4B     	 ldr r3,.L32+36
  807 008a 0922     	 movs r2,#9
  808 008c 1A70     	 strb r2,[r3]
  809              	.L29:
- 205:../at_commander.c **** 	}
- 206:../at_commander.c **** 
- 207:../at_commander.c **** }
- 810              	 .loc 1 207 0
+ 215:../at_commander.c **** 	}
+ 216:../at_commander.c **** 
+ 217:../at_commander.c **** }
+ 810              	 .loc 1 217 0
  811 008e 80BD     	 pop {r7,pc}
  812              	.L33:
  813              	 .align 2
@@ -1260,14 +1270,14 @@
  839              	 .thumb_func
  841              	getAssignedHub:
  842              	.LFB353:
- 208:../at_commander.c **** 
- 209:../at_commander.c **** /*
- 210:../at_commander.c ****  * Function: getAssignedHub
- 211:../at_commander.c ****  * ------------------------
- 212:../at_commander.c ****  * Extracts the assigned hub information from the MQTT publish response and updates configuration.
- 213:../at_commander.c ****  */
- 214:../at_commander.c **** void getAssignedHub(void) {
- 843              	 .loc 1 214 0
+ 218:../at_commander.c **** 
+ 219:../at_commander.c **** /*
+ 220:../at_commander.c ****  * Function: getAssignedHub
+ 221:../at_commander.c ****  * ------------------------
+ 222:../at_commander.c ****  * Extracts the assigned hub information from the MQTT publish response and updates configuration.
+ 223:../at_commander.c ****  */
+ 224:../at_commander.c **** void getAssignedHub(void) {
+ 843              	 .loc 1 224 0
  844              	 .cfi_startproc
  845              	 
  846              	 
@@ -1279,36 +1289,36 @@
  852 0002 00AF     	 add r7,sp,#0
  853              	.LCFI26:
  854              	 .cfi_def_cfa_register 7
- 215:../at_commander.c **** 
- 216:../at_commander.c **** 	// Assuming ATCMD_ReceiveBuffer contains the received MQTT publish response
- 217:../at_commander.c **** 	resultPtrMQTTPUB = strstr(ATCMD_ReceiveBuffer, "+MQTTPUB:");
- 855              	 .loc 1 217 0
+ 225:../at_commander.c **** 
+ 226:../at_commander.c **** 	// Assuming ATCMD_ReceiveBuffer contains the received MQTT publish response
+ 227:../at_commander.c **** 	resultPtrMQTTPUB = strstr(ATCMD_ReceiveBuffer, "+MQTTPUB:");
+ 855              	 .loc 1 227 0
  856 0004 1E48     	 ldr r0,.L37
  857 0006 1F49     	 ldr r1,.L37+4
  858 0008 FFF7FEFF 	 bl strstr
  859 000c 0246     	 mov r2,r0
  860 000e 1E4B     	 ldr r3,.L37+8
  861 0010 1A60     	 str r2,[r3]
- 218:../at_commander.c **** 	if (resultPtrMQTTPUB != NULL) {
- 862              	 .loc 1 218 0
+ 228:../at_commander.c **** 	if (resultPtrMQTTPUB != NULL) {
+ 862              	 .loc 1 228 0
  863 0012 1D4B     	 ldr r3,.L37+8
  864 0014 1B68     	 ldr r3,[r3]
  865 0016 002B     	 cmp r3,#0
  866 0018 04D0     	 beq .L35
- 219:../at_commander.c **** 		// Move the pointer to the beginning of the MQTT publish response
- 220:../at_commander.c **** 		resultPtrMQTTPUB += strlen("+MQTTPUB:");
- 867              	 .loc 1 220 0
+ 229:../at_commander.c **** 		// Move the pointer to the beginning of the MQTT publish response
+ 230:../at_commander.c **** 		resultPtrMQTTPUB += strlen("+MQTTPUB:");
+ 867              	 .loc 1 230 0
  868 001a 1B4B     	 ldr r3,.L37+8
  869 001c 1B68     	 ldr r3,[r3]
  870 001e 0933     	 adds r3,r3,#9
  871 0020 194A     	 ldr r2,.L37+8
  872 0022 1360     	 str r3,[r2]
  873              	.L35:
- 221:../at_commander.c **** 
- 222:../at_commander.c **** 	}
- 223:../at_commander.c **** 
- 224:../at_commander.c **** 	if ((azureAssignedHub = strstr(resultPtrMQTTPUB, "\"assignedHub\":\""))) {
- 874              	 .loc 1 224 0
+ 231:../at_commander.c **** 
+ 232:../at_commander.c **** 	}
+ 233:../at_commander.c **** 
+ 234:../at_commander.c **** 	if ((azureAssignedHub = strstr(resultPtrMQTTPUB, "\"assignedHub\":\""))) {
+ 874              	 .loc 1 234 0
  875 0024 184B     	 ldr r3,.L37+8
  876 0026 1B68     	 ldr r3,[r3]
  877 0028 1846     	 mov r0,r3
@@ -1321,16 +1331,16 @@
  884 0038 1B68     	 ldr r3,[r3]
  885 003a 002B     	 cmp r3,#0
  886 003c 1BD0     	 beq .L36
- 225:../at_commander.c **** 
- 226:../at_commander.c **** 		azureAssignedHub += strlen("\"assignedHub\":\"");
- 887              	 .loc 1 226 0
+ 235:../at_commander.c **** 
+ 236:../at_commander.c **** 		azureAssignedHub += strlen("\"assignedHub\":\"");
+ 887              	 .loc 1 236 0
  888 003e 144B     	 ldr r3,.L37+16
  889 0040 1B68     	 ldr r3,[r3]
  890 0042 0F33     	 adds r3,r3,#15
  891 0044 124A     	 ldr r2,.L37+16
  892 0046 1360     	 str r3,[r2]
- 227:../at_commander.c **** 		*(strstr(azureAssignedHub, "\"")) = 0;
- 893              	 .loc 1 227 0
+ 237:../at_commander.c **** 		*(strstr(azureAssignedHub, "\"")) = 0;
+ 893              	 .loc 1 237 0
  894 0048 114B     	 ldr r3,.L37+16
  895 004a 1B68     	 ldr r3,[r3]
  896 004c 1846     	 mov r0,r3
@@ -1339,16 +1349,16 @@
  899 0054 0346     	 mov r3,r0
  900 0056 0022     	 movs r2,#0
  901 0058 1A70     	 strb r2,[r3]
- 228:../at_commander.c **** 
- 229:../at_commander.c **** 		sprintf(myBrokerAdress, azureAssignedHub);
- 902              	 .loc 1 229 0
+ 238:../at_commander.c **** 
+ 239:../at_commander.c **** 		sprintf(myBrokerAdress, azureAssignedHub);
+ 902              	 .loc 1 239 0
  903 005a 0D4B     	 ldr r3,.L37+16
  904 005c 1B68     	 ldr r3,[r3]
  905 005e 0D48     	 ldr r0,.L37+20
  906 0060 1946     	 mov r1,r3
  907 0062 FFF7FEFF 	 bl sprintf
- 230:../at_commander.c **** 		sprintf(brokerUsername, "%s/%s/?api-version=2021-04-12",
- 908              	 .loc 1 230 0
+ 240:../at_commander.c **** 		sprintf(brokerUsername, "%s/%s/?api-version=2021-04-12",
+ 908              	 .loc 1 240 0
  909 0066 0A4B     	 ldr r3,.L37+16
  910 0068 1B68     	 ldr r3,[r3]
  911 006a 0B48     	 ldr r0,.L37+24
@@ -1357,18 +1367,18 @@
  914 0070 0B4B     	 ldr r3,.L37+32
  915 0072 FFF7FEFF 	 bl sprintf
  916              	.L36:
- 231:../at_commander.c **** 				azureAssignedHub, deviceId);
- 232:../at_commander.c **** 
- 233:../at_commander.c **** 	}
- 234:../at_commander.c **** 
- 235:../at_commander.c **** 	ATCMD_state = STATE_MQTT_DISCONNECT;
- 917              	 .loc 1 235 0
+ 241:../at_commander.c **** 				azureAssignedHub, deviceId);
+ 242:../at_commander.c **** 
+ 243:../at_commander.c **** 	}
+ 244:../at_commander.c **** 
+ 245:../at_commander.c **** 	ATCMD_state = STATE_MQTT_DISCONNECT;
+ 917              	 .loc 1 245 0
  918 0076 0B4B     	 ldr r3,.L37+36
  919 0078 0A22     	 movs r2,#10
  920 007a 1A70     	 strb r2,[r3]
- 236:../at_commander.c **** 
- 237:../at_commander.c **** }
- 921              	 .loc 1 237 0
+ 246:../at_commander.c **** 
+ 247:../at_commander.c **** }
+ 921              	 .loc 1 247 0
  922 007c 80BD     	 pop {r7,pc}
  923              	.L38:
  924 007e 00BF     	 .align 2
@@ -1400,13 +1410,13 @@
  947              	 .thumb_func
  949              	disconnectMQTT:
  950              	.LFB354:
- 238:../at_commander.c **** /*
- 239:../at_commander.c ****  * Function: disconnectMQTT
- 240:../at_commander.c ****  * ------------------------
- 241:../at_commander.c ****  * Disconnects from the MQTT broker.
- 242:../at_commander.c ****  */
- 243:../at_commander.c **** void disconnectMQTT(void) {
- 951              	 .loc 1 243 0
+ 248:../at_commander.c **** /*
+ 249:../at_commander.c ****  * Function: disconnectMQTT
+ 250:../at_commander.c ****  * ------------------------
+ 251:../at_commander.c ****  * Disconnects from the MQTT broker.
+ 252:../at_commander.c ****  */
+ 253:../at_commander.c **** void disconnectMQTT(void) {
+ 951              	 .loc 1 253 0
  952              	 .cfi_startproc
  953              	 
  954              	 
@@ -1418,23 +1428,23 @@
  960 0002 00AF     	 add r7,sp,#0
  961              	.LCFI28:
  962              	 .cfi_def_cfa_register 7
- 244:../at_commander.c **** 
- 245:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 963              	 .loc 1 245 0
+ 254:../at_commander.c **** 
+ 255:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 963              	 .loc 1 255 0
  964 0004 0548     	 ldr r0,.L40
  965 0006 0021     	 movs r1,#0
  966 0008 FFF7FEFF 	 bl ATCMD_Print
- 246:../at_commander.c **** 	ATCMD_Print("AT+MQTTDISCONN\r\n");
- 967              	 .loc 1 246 0
+ 256:../at_commander.c **** 	ATCMD_Print("AT+MQTTDISCONN\r\n");
+ 967              	 .loc 1 256 0
  968 000c 0448     	 ldr r0,.L40+4
  969 000e FFF7FEFF 	 bl ATCMD_Print
- 247:../at_commander.c **** 	ATCMD_state = STATE_RECONNECT_CLOUD;
- 970              	 .loc 1 247 0
+ 257:../at_commander.c **** 	ATCMD_state = STATE_RECONNECT_CLOUD;
+ 970              	 .loc 1 257 0
  971 0012 044B     	 ldr r3,.L40+8
  972 0014 0B22     	 movs r2,#11
  973 0016 1A70     	 strb r2,[r3]
- 248:../at_commander.c **** }
- 974              	 .loc 1 248 0
+ 258:../at_commander.c **** }
+ 974              	 .loc 1 258 0
  975 0018 80BD     	 pop {r7,pc}
  976              	.L41:
  977 001a 00BF     	 .align 2
@@ -1451,13 +1461,13 @@
  989              	 .thumb_func
  991              	reconnectCloud:
  992              	.LFB355:
- 249:../at_commander.c **** /*
- 250:../at_commander.c ****  * Function: reconnectCloud
- 251:../at_commander.c ****  * ------------------------
- 252:../at_commander.c ****  * Reconnects to the cloud after disconnecting, updating parameters based on the assigned hub.
- 253:../at_commander.c ****  */
- 254:../at_commander.c **** void reconnectCloud(void) {
- 993              	 .loc 1 254 0
+ 259:../at_commander.c **** /*
+ 260:../at_commander.c ****  * Function: reconnectCloud
+ 261:../at_commander.c ****  * ------------------------
+ 262:../at_commander.c ****  * Reconnects to the cloud after disconnecting, updating parameters based on the assigned hub.
+ 263:../at_commander.c ****  */
+ 264:../at_commander.c **** void reconnectCloud(void) {
+ 993              	 .loc 1 264 0
  994              	 .cfi_startproc
  995              	 
  996              	 
@@ -1469,56 +1479,56 @@
  1002 0002 00AF     	 add r7,sp,#0
  1003              	.LCFI30:
  1004              	 .cfi_def_cfa_register 7
- 255:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 1005              	 .loc 1 255 0
+ 265:../at_commander.c **** 
+ 266:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 1005              	 .loc 1 266 0
  1006 0004 1248     	 ldr r0,.L43
  1007 0006 0021     	 movs r1,#0
  1008 0008 FFF7FEFF 	 bl ATCMD_Print
- 256:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, myBrokerAdress);
- 1009              	 .loc 1 256 0
+ 267:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, myBrokerAdress);
+ 1009              	 .loc 1 267 0
  1010 000c 1148     	 ldr r0,.L43+4
  1011 000e 0121     	 movs r1,#1
  1012 0010 114A     	 ldr r2,.L43+8
  1013 0012 FFF7FEFF 	 bl ATCMD_Print
- 257:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
- 1014              	 .loc 1 257 0
+ 268:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
+ 1014              	 .loc 1 268 0
  1015 0016 1148     	 ldr r0,.L43+12
  1016 0018 0221     	 movs r1,#2
  1017 001a 42F2B322 	 movw r2,#8883
  1018 001e FFF7FEFF 	 bl ATCMD_Print
- 258:../at_commander.c **** 	MQTT_BROKER_PORT);
- 259:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, deviceId);
- 1019              	 .loc 1 259 0
+ 269:../at_commander.c **** 	MQTT_BROKER_PORT);
+ 270:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, deviceId);
+ 1019              	 .loc 1 270 0
  1020 0022 0C48     	 ldr r0,.L43+4
  1021 0024 0321     	 movs r1,#3
  1022 0026 0E4A     	 ldr r2,.L43+16
  1023 0028 FFF7FEFF 	 bl ATCMD_Print
- 260:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, brokerUsername);
- 1024              	 .loc 1 260 0
+ 271:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, brokerUsername);
+ 1024              	 .loc 1 271 0
  1025 002c 0948     	 ldr r0,.L43+4
  1026 002e 0421     	 movs r1,#4
  1027 0030 0C4A     	 ldr r2,.L43+20
  1028 0032 FFF7FEFF 	 bl ATCMD_Print
- 261:../at_commander.c **** 
- 262:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
- 1029              	 .loc 1 262 0
+ 272:../at_commander.c **** 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
+ 1029              	 .loc 1 272 0
  1030 0036 0948     	 ldr r0,.L43+12
  1031 0038 0721     	 movs r1,#7
  1032 003a 0122     	 movs r2,#1
  1033 003c FFF7FEFF 	 bl ATCMD_Print
- 263:../at_commander.c **** 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
- 1034              	 .loc 1 263 0
+ 273:../at_commander.c **** 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
+ 1034              	 .loc 1 273 0
  1035 0040 0948     	 ldr r0,.L43+24
  1036 0042 0121     	 movs r1,#1
  1037 0044 FFF7FEFF 	 bl ATCMD_Print
- 264:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_1;
- 1038              	 .loc 1 264 0
+ 274:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_1;
+ 1038              	 .loc 1 274 0
  1039 0048 084B     	 ldr r3,.L43+28
  1040 004a 0C22     	 movs r2,#12
  1041 004c 1A70     	 strb r2,[r3]
- 265:../at_commander.c **** 
- 266:../at_commander.c **** }
- 1042              	 .loc 1 266 0
+ 275:../at_commander.c **** 
+ 276:../at_commander.c **** }
+ 1042              	 .loc 1 276 0
  1043 004e 80BD     	 pop {r7,pc}
  1044              	.L44:
  1045              	 .align 2
@@ -1548,13 +1558,13 @@
  1066              	 .thumb_func
  1068              	azureSubscribe_1:
  1069              	.LFB356:
- 267:../at_commander.c **** /*
- 268:../at_commander.c ****  * Function: azureSubscribe_1
- 269:../at_commander.c ****  * --------------------------
- 270:../at_commander.c ****  * Subscribes to the first Azure IoT Hub topic.
- 271:../at_commander.c ****  */
- 272:../at_commander.c **** void azureSubscribe_1(void) {
- 1070              	 .loc 1 272 0
+ 277:../at_commander.c **** /*
+ 278:../at_commander.c ****  * Function: azureSubscribe_1
+ 279:../at_commander.c ****  * --------------------------
+ 280:../at_commander.c ****  * Subscribes to the first Azure IoT Hub topic.
+ 281:../at_commander.c ****  */
+ 282:../at_commander.c **** void azureSubscribe_1(void) {
+ 1070              	 .loc 1 282 0
  1071              	 .cfi_startproc
  1072              	 
  1073              	 
@@ -1566,26 +1576,27 @@
  1079 0002 00AF     	 add r7,sp,#0
  1080              	.LCFI32:
  1081              	 .cfi_def_cfa_register 7
- 273:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 1082              	 .loc 1 273 0
+ 283:../at_commander.c **** 
+ 284:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 1082              	 .loc 1 284 0
  1083 0004 0648     	 ldr r0,.L46
  1084 0006 0021     	 movs r1,#0
  1085 0008 FFF7FEFF 	 bl ATCMD_Print
- 274:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_METHOD_REQUEST,
- 1086              	 .loc 1 274 0
+ 285:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_METHOD_REQUEST,
+ 1086              	 .loc 1 285 0
  1087 000c 0548     	 ldr r0,.L46+4
  1088 000e 0649     	 ldr r1,.L46+8
  1089 0010 0122     	 movs r2,#1
  1090 0012 FFF7FEFF 	 bl ATCMD_Print
- 275:../at_commander.c **** 	MQTT_SUB_QOS);
- 276:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_2;
- 1091              	 .loc 1 276 0
+ 286:../at_commander.c **** 	MQTT_SUB_QOS);
+ 287:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_2;
+ 1091              	 .loc 1 287 0
  1092 0016 054B     	 ldr r3,.L46+12
  1093 0018 0D22     	 movs r2,#13
  1094 001a 1A70     	 strb r2,[r3]
- 277:../at_commander.c **** 
- 278:../at_commander.c **** }
- 1095              	 .loc 1 278 0
+ 288:../at_commander.c **** 
+ 289:../at_commander.c **** }
+ 1095              	 .loc 1 289 0
  1096 001c 80BD     	 pop {r7,pc}
  1097              	.L47:
  1098 001e 00BF     	 .align 2
@@ -1611,13 +1622,13 @@
  1115              	 .thumb_func
  1117              	azureSubscribe_2:
  1118              	.LFB357:
- 279:../at_commander.c **** /*
- 280:../at_commander.c ****  * Function: azureSubscribe_2
- 281:../at_commander.c ****  * --------------------------
- 282:../at_commander.c ****  * Subscribes to the second Azure IoT Hub topic.
- 283:../at_commander.c ****  */
- 284:../at_commander.c **** void azureSubscribe_2(void) {
- 1119              	 .loc 1 284 0
+ 290:../at_commander.c **** /*
+ 291:../at_commander.c ****  * Function: azureSubscribe_2
+ 292:../at_commander.c ****  * --------------------------
+ 293:../at_commander.c ****  * Subscribes to the second Azure IoT Hub topic.
+ 294:../at_commander.c ****  */
+ 295:../at_commander.c **** void azureSubscribe_2(void) {
+ 1119              	 .loc 1 295 0
  1120              	 .cfi_startproc
  1121              	 
  1122              	 
@@ -1629,26 +1640,27 @@
  1128 0002 00AF     	 add r7,sp,#0
  1129              	.LCFI34:
  1130              	 .cfi_def_cfa_register 7
- 285:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 1131              	 .loc 1 285 0
+ 296:../at_commander.c **** 
+ 297:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 1131              	 .loc 1 297 0
  1132 0004 0648     	 ldr r0,.L49
  1133 0006 0021     	 movs r1,#0
  1134 0008 FFF7FEFF 	 bl ATCMD_Print
- 286:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_DESIRED,
- 1135              	 .loc 1 286 0
+ 298:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_DESIRED,
+ 1135              	 .loc 1 298 0
  1136 000c 0548     	 ldr r0,.L49+4
  1137 000e 0649     	 ldr r1,.L49+8
  1138 0010 0122     	 movs r2,#1
  1139 0012 FFF7FEFF 	 bl ATCMD_Print
- 287:../at_commander.c **** 	MQTT_SUB_QOS);
- 288:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_3;
- 1140              	 .loc 1 288 0
+ 299:../at_commander.c **** 	MQTT_SUB_QOS);
+ 300:../at_commander.c **** 	ATCMD_state = STATE_AZURE_SUB_3;
+ 1140              	 .loc 1 300 0
  1141 0016 054B     	 ldr r3,.L49+12
  1142 0018 0E22     	 movs r2,#14
  1143 001a 1A70     	 strb r2,[r3]
- 289:../at_commander.c **** 
- 290:../at_commander.c **** }
- 1144              	 .loc 1 290 0
+ 301:../at_commander.c **** 
+ 302:../at_commander.c **** }
+ 1144              	 .loc 1 302 0
  1145 001c 80BD     	 pop {r7,pc}
  1146              	.L50:
  1147 001e 00BF     	 .align 2
@@ -1674,13 +1686,13 @@
  1164              	 .thumb_func
  1166              	azureSubscribe_3:
  1167              	.LFB358:
- 291:../at_commander.c **** /*
- 292:../at_commander.c ****  * Function: azureSubscribe_3
- 293:../at_commander.c ****  * --------------------------
- 294:../at_commander.c ****  * Subscribes to the third Azure IoT Hub topic.
- 295:../at_commander.c ****  */
- 296:../at_commander.c **** void azureSubscribe_3(void) {
- 1168              	 .loc 1 296 0
+ 303:../at_commander.c **** /*
+ 304:../at_commander.c ****  * Function: azureSubscribe_3
+ 305:../at_commander.c ****  * --------------------------
+ 306:../at_commander.c ****  * Subscribes to the third Azure IoT Hub topic.
+ 307:../at_commander.c ****  */
+ 308:../at_commander.c **** void azureSubscribe_3(void) {
+ 1168              	 .loc 1 308 0
  1169              	 .cfi_startproc
  1170              	 
  1171              	 
@@ -1692,26 +1704,27 @@
  1177 0002 00AF     	 add r7,sp,#0
  1178              	.LCFI36:
  1179              	 .cfi_def_cfa_register 7
- 297:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 1180              	 .loc 1 297 0
+ 309:../at_commander.c **** 
+ 310:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 1180              	 .loc 1 310 0
  1181 0004 0648     	 ldr r0,.L52
  1182 0006 0021     	 movs r1,#0
  1183 0008 FFF7FEFF 	 bl ATCMD_Print
- 298:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_RESPONSE,
- 1184              	 .loc 1 298 0
+ 311:../at_commander.c **** 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_RESPONSE,
+ 1184              	 .loc 1 311 0
  1185 000c 0548     	 ldr r0,.L52+4
  1186 000e 0649     	 ldr r1,.L52+8
  1187 0010 0122     	 movs r2,#1
  1188 0012 FFF7FEFF 	 bl ATCMD_Print
- 299:../at_commander.c **** 	MQTT_SUB_QOS);
- 300:../at_commander.c **** 	ATCMD_state = STATE_PUBLISH_CLOUD;
- 1189              	 .loc 1 300 0
+ 312:../at_commander.c **** 	MQTT_SUB_QOS);
+ 313:../at_commander.c **** 	ATCMD_state = STATE_PUBLISH_CLOUD;
+ 1189              	 .loc 1 313 0
  1190 0016 054B     	 ldr r3,.L52+12
  1191 0018 0F22     	 movs r2,#15
  1192 001a 1A70     	 strb r2,[r3]
- 301:../at_commander.c **** 
- 302:../at_commander.c **** }
- 1193              	 .loc 1 302 0
+ 314:../at_commander.c **** 
+ 315:../at_commander.c **** }
+ 1193              	 .loc 1 315 0
  1194 001c 80BD     	 pop {r7,pc}
  1195              	.L53:
  1196 001e 00BF     	 .align 2
@@ -1729,13 +1742,13 @@
  1209              	 .thumb_func
  1211              	publishTelemetry:
  1212              	.LFB359:
- 303:../at_commander.c **** /*
- 304:../at_commander.c ****  * Function: publishTelemetry
- 305:../at_commander.c ****  * --------------------------
- 306:../at_commander.c ****  * Publishes telemetry data to the cloud with a formatted payload.
- 307:../at_commander.c ****  */
- 308:../at_commander.c **** void publishTelemetry(void) {
- 1213              	 .loc 1 308 0
+ 316:../at_commander.c **** /*
+ 317:../at_commander.c ****  * Function: publishTelemetry
+ 318:../at_commander.c ****  * --------------------------
+ 319:../at_commander.c ****  * Publishes telemetry data to the cloud with a formatted payload.
+ 320:../at_commander.c ****  */
+ 321:../at_commander.c **** void publishTelemetry(void) {
+ 1213              	 .loc 1 321 0
  1214              	 .cfi_startproc
  1215              	 
  1216              	 
@@ -1747,33 +1760,31 @@
  1222 0002 00AF     	 add r7,sp,#0
  1223              	.LCFI38:
  1224              	 .cfi_def_cfa_register 7
- 309:../at_commander.c **** 	createPubMQTTString();
- 1225              	 .loc 1 309 0
+ 322:../at_commander.c **** 
+ 323:../at_commander.c **** 	createPubMQTTString();
+ 1225              	 .loc 1 323 0
  1226 0004 FFF7FEFF 	 bl createPubMQTTString
- 310:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
- 1227              	 .loc 1 310 0
+ 324:../at_commander.c **** 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
+ 1227              	 .loc 1 324 0
  1228 0008 0648     	 ldr r0,.L55
  1229 000a 0021     	 movs r1,#0
  1230 000c FFF7FEFF 	 bl ATCMD_Print
- 311:../at_commander.c **** 	ATCMD_Print(bufferPayload);
- 1231              	 .loc 1 311 0
+ 325:../at_commander.c **** 	ATCMD_Print(bufferPayload);
+ 1231              	 .loc 1 325 0
  1232 0010 0548     	 ldr r0,.L55+4
  1233 0012 FFF7FEFF 	 bl ATCMD_Print
- 312:../at_commander.c **** 	//I have to change it
- 313:../at_commander.c **** 	//ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
- 314:../at_commander.c **** 	//MQTT_NOT_RETAIN, pub_topic_telemetry, json);
- 315:../at_commander.c **** 	setTimeout(10);
- 1234              	 .loc 1 315 0
+ 326:../at_commander.c **** 	setTimeout(10);
+ 1234              	 .loc 1 326 0
  1235 0016 0A20     	 movs r0,#10
  1236 0018 FFF7FEFF 	 bl setTimeout
- 316:../at_commander.c **** 	ATCMD_state = STATE_TIMEOUT;
- 1237              	 .loc 1 316 0
+ 327:../at_commander.c **** 	ATCMD_state = STATE_TIMEOUT;
+ 1237              	 .loc 1 327 0
  1238 001c 034B     	 ldr r3,.L55+8
  1239 001e 1022     	 movs r2,#16
  1240 0020 1A70     	 strb r2,[r3]
- 317:../at_commander.c **** 
- 318:../at_commander.c **** }
- 1241              	 .loc 1 318 0
+ 328:../at_commander.c **** 
+ 329:../at_commander.c **** }
+ 1241              	 .loc 1 329 0
  1242 0022 80BD     	 pop {r7,pc}
  1243              	.L56:
  1244              	 .align 2
@@ -1790,13 +1801,13 @@
  1256              	 .thumb_func
  1258              	timeoutHandling:
  1259              	.LFB360:
- 319:../at_commander.c **** /*
- 320:../at_commander.c ****  * Function: timeoutHandling
- 321:../at_commander.c ****  * -------------------------
- 322:../at_commander.c ****  * Handles the timeout scenario by transitioning to the next state if a timeout occurs.
- 323:../at_commander.c ****  */
- 324:../at_commander.c **** void timeoutHandling(void) {
- 1260              	 .loc 1 324 0
+ 330:../at_commander.c **** /*
+ 331:../at_commander.c ****  * Function: timeoutHandling
+ 332:../at_commander.c ****  * -------------------------
+ 333:../at_commander.c ****  * Handles the timeout scenario by transitioning to the next state if a timeout occurs.
+ 334:../at_commander.c ****  */
+ 335:../at_commander.c **** void timeoutHandling(void) {
+ 1260              	 .loc 1 335 0
  1261              	 .cfi_startproc
  1262              	 
  1263              	 
@@ -1808,22 +1819,23 @@
  1269 0002 00AF     	 add r7,sp,#0
  1270              	.LCFI40:
  1271              	 .cfi_def_cfa_register 7
- 325:../at_commander.c **** 	if (isTimeout()) {
- 1272              	 .loc 1 325 0
+ 336:../at_commander.c **** 
+ 337:../at_commander.c **** 	if (isTimeout()) {
+ 1272              	 .loc 1 337 0
  1273 0004 FFF7FEFF 	 bl isTimeout
  1274 0008 0346     	 mov r3,r0
  1275 000a 002B     	 cmp r3,#0
  1276 000c 02D0     	 beq .L57
- 326:../at_commander.c **** 		ATCMD_state = STATE_PUBLISH_CLOUD;
- 1277              	 .loc 1 326 0
+ 338:../at_commander.c **** 		ATCMD_state = STATE_PUBLISH_CLOUD;
+ 1277              	 .loc 1 338 0
  1278 000e 024B     	 ldr r3,.L59
  1279 0010 0F22     	 movs r2,#15
  1280 0012 1A70     	 strb r2,[r3]
  1281              	.L57:
- 327:../at_commander.c **** 	}
- 328:../at_commander.c **** 
- 329:../at_commander.c **** }
- 1282              	 .loc 1 329 0
+ 339:../at_commander.c **** 	}
+ 340:../at_commander.c **** 
+ 341:../at_commander.c **** }
+ 1282              	 .loc 1 341 0
  1283 0014 80BD     	 pop {r7,pc}
  1284              	.L60:
  1285 0016 00BF     	 .align 2
@@ -1838,13 +1850,13 @@
  1295              	 .thumb_func
  1297              	ATCMD_Task:
  1298              	.LFB361:
- 330:../at_commander.c **** /*
- 331:../at_commander.c ****  * Function: ATCMD_Task
- 332:../at_commander.c ****  * --------------------
- 333:../at_commander.c ****  * Executes the appropriate task based on the current state of the state machine.
- 334:../at_commander.c ****  */
- 335:../at_commander.c **** void ATCMD_Task(void) {
- 1299              	 .loc 1 335 0
+ 342:../at_commander.c **** /*
+ 343:../at_commander.c ****  * Function: ATCMD_Task
+ 344:../at_commander.c ****  * --------------------
+ 345:../at_commander.c ****  * Executes the appropriate task based on the current state of the state machine.
+ 346:../at_commander.c ****  */
+ 347:../at_commander.c **** void ATCMD_Task(void) {
+ 1299              	 .loc 1 347 0
  1300              	 .cfi_startproc
  1301              	 
  1302              	 
@@ -1856,8 +1868,9 @@
  1308 0002 00AF     	 add r7,sp,#0
  1309              	.LCFI42:
  1310              	 .cfi_def_cfa_register 7
- 336:../at_commander.c **** 	switch (ATCMD_state) {
- 1311              	 .loc 1 336 0
+ 348:../at_commander.c **** 
+ 349:../at_commander.c **** 	switch (ATCMD_state) {
+ 1311              	 .loc 1 349 0
  1312 0004 2F4B     	 ldr r3,.L83
  1313 0006 1B78     	 ldrb r3,[r3]
  1314 0008 102B     	 cmp r3,#16
@@ -1885,150 +1898,151 @@
  1336 0054 B9000000 	 .word .L80+1
  1337              	 .p2align 1
  1338              	.L63:
- 337:../at_commander.c **** 	case STATE_INIT:
- 338:../at_commander.c **** 		initModule();
- 1339              	 .loc 1 338 0
+ 350:../at_commander.c **** 
+ 351:../at_commander.c **** 	case STATE_INIT:
+ 352:../at_commander.c **** 		initModule();
+ 1339              	 .loc 1 352 0
  1340 0058 FFF7FEFF 	 bl initModule
- 339:../at_commander.c **** 		break;
- 1341              	 .loc 1 339 0
+ 353:../at_commander.c **** 		break;
+ 1341              	 .loc 1 353 0
  1342 005c 30E0     	 b .L61
  1343              	.L65:
- 340:../at_commander.c **** 	case STATE_ROOT_CERT_UPDATE:
- 341:../at_commander.c **** 		updateRootCert();
- 1344              	 .loc 1 341 0
+ 354:../at_commander.c **** 	case STATE_ROOT_CERT_UPDATE:
+ 355:../at_commander.c **** 		updateRootCert();
+ 1344              	 .loc 1 355 0
  1345 005e FFF7FEFF 	 bl updateRootCert
- 342:../at_commander.c **** 		break;
- 1346              	 .loc 1 342 0
+ 356:../at_commander.c **** 		break;
+ 1346              	 .loc 1 356 0
  1347 0062 2DE0     	 b .L61
  1348              	.L66:
- 343:../at_commander.c **** 	case STATE_CONFUGURE_WLAN:
- 344:../at_commander.c **** 		configureWLAN();
- 1349              	 .loc 1 344 0
+ 357:../at_commander.c **** 	case STATE_CONFUGURE_WLAN:
+ 358:../at_commander.c **** 		configureWLAN();
+ 1349              	 .loc 1 358 0
  1350 0064 FFF7FEFF 	 bl configureWLAN
- 345:../at_commander.c **** 		break;
- 1351              	 .loc 1 345 0
+ 359:../at_commander.c **** 		break;
+ 1351              	 .loc 1 359 0
  1352 0068 2AE0     	 b .L61
  1353              	.L67:
- 346:../at_commander.c **** 	case STATE_START_WLAN:
- 347:../at_commander.c **** 		startWLAN();
- 1354              	 .loc 1 347 0
+ 360:../at_commander.c **** 	case STATE_START_WLAN:
+ 361:../at_commander.c **** 		startWLAN();
+ 1354              	 .loc 1 361 0
  1355 006a FFF7FEFF 	 bl startWLAN
- 348:../at_commander.c **** 		break;
- 1356              	 .loc 1 348 0
+ 362:../at_commander.c **** 		break;
+ 1356              	 .loc 1 362 0
  1357 006e 27E0     	 b .L61
  1358              	.L68:
- 349:../at_commander.c **** 	case STATE_WAIT_FOR_AP_CONNECT:
- 350:../at_commander.c **** 		waitForAPConnect();
- 1359              	 .loc 1 350 0
+ 363:../at_commander.c **** 	case STATE_WAIT_FOR_AP_CONNECT:
+ 364:../at_commander.c **** 		waitForAPConnect();
+ 1359              	 .loc 1 364 0
  1360 0070 FFF7FEFF 	 bl waitForAPConnect
- 351:../at_commander.c **** 		break;
- 1361              	 .loc 1 351 0
+ 365:../at_commander.c **** 		break;
+ 1361              	 .loc 1 365 0
  1362 0074 24E0     	 b .L61
  1363              	.L69:
- 352:../at_commander.c **** 	case STATE_CONFIGURE_CLOUD:
- 353:../at_commander.c **** 		configureCloud();
- 1364              	 .loc 1 353 0
+ 366:../at_commander.c **** 	case STATE_CONFIGURE_CLOUD:
+ 367:../at_commander.c **** 		configureCloud();
+ 1364              	 .loc 1 367 0
  1365 0076 FFF7FEFF 	 bl configureCloud
- 354:../at_commander.c **** 		break;
- 1366              	 .loc 1 354 0
+ 368:../at_commander.c **** 		break;
+ 1366              	 .loc 1 368 0
  1367 007a 21E0     	 b .L61
  1368              	.L70:
- 355:../at_commander.c **** 	case STATE_SUB_DPS:
- 356:../at_commander.c **** 		subscribeDPS();
- 1369              	 .loc 1 356 0
+ 369:../at_commander.c **** 	case STATE_SUB_DPS:
+ 370:../at_commander.c **** 		subscribeDPS();
+ 1369              	 .loc 1 370 0
  1370 007c FFF7FEFF 	 bl subscribeDPS
- 357:../at_commander.c **** 		break;
- 1371              	 .loc 1 357 0
+ 371:../at_commander.c **** 		break;
+ 1371              	 .loc 1 371 0
  1372 0080 1EE0     	 b .L61
  1373              	.L71:
- 358:../at_commander.c **** 	case STATE_PUB_DPS_REG_PUT:
- 359:../at_commander.c **** 		publishDPSPut();
- 1374              	 .loc 1 359 0
+ 372:../at_commander.c **** 	case STATE_PUB_DPS_REG_PUT:
+ 373:../at_commander.c **** 		publishDPSPut();
+ 1374              	 .loc 1 373 0
  1375 0082 FFF7FEFF 	 bl publishDPSPut
- 360:../at_commander.c **** 		break;
- 1376              	 .loc 1 360 0
+ 374:../at_commander.c **** 		break;
+ 1376              	 .loc 1 374 0
  1377 0086 1BE0     	 b .L61
  1378              	.L72:
- 361:../at_commander.c **** 	case STATE_PUB_DPS_REG_GET:
- 362:../at_commander.c **** 		publishDPSGet();
- 1379              	 .loc 1 362 0
+ 375:../at_commander.c **** 	case STATE_PUB_DPS_REG_GET:
+ 376:../at_commander.c **** 		publishDPSGet();
+ 1379              	 .loc 1 376 0
  1380 0088 FFF7FEFF 	 bl publishDPSGet
- 363:../at_commander.c **** 		break;
- 1381              	 .loc 1 363 0
+ 377:../at_commander.c **** 		break;
+ 1381              	 .loc 1 377 0
  1382 008c 18E0     	 b .L61
  1383              	.L73:
- 364:../at_commander.c **** 	case STATE_AZURE_GET_ASSIGN_HUB:
- 365:../at_commander.c **** 		getAssignedHub();
- 1384              	 .loc 1 365 0
+ 378:../at_commander.c **** 	case STATE_AZURE_GET_ASSIGN_HUB:
+ 379:../at_commander.c **** 		getAssignedHub();
+ 1384              	 .loc 1 379 0
  1385 008e FFF7FEFF 	 bl getAssignedHub
- 366:../at_commander.c **** 		break;
- 1386              	 .loc 1 366 0
+ 380:../at_commander.c **** 		break;
+ 1386              	 .loc 1 380 0
  1387 0092 15E0     	 b .L61
  1388              	.L74:
- 367:../at_commander.c **** 	case STATE_MQTT_DISCONNECT:
- 368:../at_commander.c **** 		disconnectMQTT();
- 1389              	 .loc 1 368 0
+ 381:../at_commander.c **** 	case STATE_MQTT_DISCONNECT:
+ 382:../at_commander.c **** 		disconnectMQTT();
+ 1389              	 .loc 1 382 0
  1390 0094 FFF7FEFF 	 bl disconnectMQTT
- 369:../at_commander.c **** 		break;
- 1391              	 .loc 1 369 0
+ 383:../at_commander.c **** 		break;
+ 1391              	 .loc 1 383 0
  1392 0098 12E0     	 b .L61
  1393              	.L75:
- 370:../at_commander.c **** 	case STATE_RECONNECT_CLOUD:
- 371:../at_commander.c **** 		reconnectCloud();
- 1394              	 .loc 1 371 0
+ 384:../at_commander.c **** 	case STATE_RECONNECT_CLOUD:
+ 385:../at_commander.c **** 		reconnectCloud();
+ 1394              	 .loc 1 385 0
  1395 009a FFF7FEFF 	 bl reconnectCloud
- 372:../at_commander.c **** 		break;
- 1396              	 .loc 1 372 0
+ 386:../at_commander.c **** 		break;
+ 1396              	 .loc 1 386 0
  1397 009e 0FE0     	 b .L61
  1398              	.L76:
- 373:../at_commander.c **** 	case STATE_AZURE_SUB_1:
- 374:../at_commander.c **** 		azureSubscribe_1();
- 1399              	 .loc 1 374 0
+ 387:../at_commander.c **** 	case STATE_AZURE_SUB_1:
+ 388:../at_commander.c **** 		azureSubscribe_1();
+ 1399              	 .loc 1 388 0
  1400 00a0 FFF7FEFF 	 bl azureSubscribe_1
- 375:../at_commander.c **** 		break;
- 1401              	 .loc 1 375 0
+ 389:../at_commander.c **** 		break;
+ 1401              	 .loc 1 389 0
  1402 00a4 0CE0     	 b .L61
  1403              	.L77:
- 376:../at_commander.c **** 	case STATE_AZURE_SUB_2:
- 377:../at_commander.c **** 		azureSubscribe_2();
- 1404              	 .loc 1 377 0
+ 390:../at_commander.c **** 	case STATE_AZURE_SUB_2:
+ 391:../at_commander.c **** 		azureSubscribe_2();
+ 1404              	 .loc 1 391 0
  1405 00a6 FFF7FEFF 	 bl azureSubscribe_2
- 378:../at_commander.c **** 		break;
- 1406              	 .loc 1 378 0
+ 392:../at_commander.c **** 		break;
+ 1406              	 .loc 1 392 0
  1407 00aa 09E0     	 b .L61
  1408              	.L78:
- 379:../at_commander.c **** 	case STATE_AZURE_SUB_3:
- 380:../at_commander.c **** 		azureSubscribe_3();
- 1409              	 .loc 1 380 0
+ 393:../at_commander.c **** 	case STATE_AZURE_SUB_3:
+ 394:../at_commander.c **** 		azureSubscribe_3();
+ 1409              	 .loc 1 394 0
  1410 00ac FFF7FEFF 	 bl azureSubscribe_3
- 381:../at_commander.c **** 		break;
- 1411              	 .loc 1 381 0
+ 395:../at_commander.c **** 		break;
+ 1411              	 .loc 1 395 0
  1412 00b0 06E0     	 b .L61
  1413              	.L79:
- 382:../at_commander.c **** 	case STATE_PUBLISH_CLOUD:
- 383:../at_commander.c **** 		publishTelemetry();
- 1414              	 .loc 1 383 0
+ 396:../at_commander.c **** 	case STATE_PUBLISH_CLOUD:
+ 397:../at_commander.c **** 		publishTelemetry();
+ 1414              	 .loc 1 397 0
  1415 00b2 FFF7FEFF 	 bl publishTelemetry
- 384:../at_commander.c **** 		break;
- 1416              	 .loc 1 384 0
+ 398:../at_commander.c **** 		break;
+ 1416              	 .loc 1 398 0
  1417 00b6 03E0     	 b .L61
  1418              	.L80:
- 385:../at_commander.c **** 	case STATE_TIMEOUT:
- 386:../at_commander.c **** 		timeoutHandling();
- 1419              	 .loc 1 386 0
+ 399:../at_commander.c **** 	case STATE_TIMEOUT:
+ 400:../at_commander.c **** 		timeoutHandling();
+ 1419              	 .loc 1 400 0
  1420 00b8 FFF7FEFF 	 bl timeoutHandling
- 387:../at_commander.c **** 		break;
- 1421              	 .loc 1 387 0
+ 401:../at_commander.c **** 		break;
+ 1421              	 .loc 1 401 0
  1422 00bc 00E0     	 b .L61
  1423              	.L82:
- 388:../at_commander.c **** 	default:
- 389:../at_commander.c **** 		break;
- 1424              	 .loc 1 389 0
+ 402:../at_commander.c **** 	default:
+ 403:../at_commander.c **** 		break;
+ 1424              	 .loc 1 403 0
  1425 00be 00BF     	 nop
  1426              	.L61:
- 390:../at_commander.c **** 	}
- 391:../at_commander.c **** }
- 1427              	 .loc 1 391 0
+ 404:../at_commander.c **** 	}
+ 405:../at_commander.c **** }
+ 1427              	 .loc 1 405 0
  1428 00c0 80BD     	 pop {r7,pc}
  1429              	.L84:
  1430 00c2 00BF     	 .align 2
@@ -2043,15 +2057,15 @@
  1440              	 .thumb_func
  1442              	ATCMD_Print:
  1443              	.LFB362:
- 392:../at_commander.c **** 
- 393:../at_commander.c **** /*
- 394:../at_commander.c ****  * Function: ATCMD_Print
- 395:../at_commander.c ****  * ---------------------
- 396:../at_commander.c ****  * Sends formatted AT commands to the module, handles transmission and reception,
- 397:../at_commander.c ****  * and checks for potential errors.
- 398:../at_commander.c ****  */
- 399:../at_commander.c **** void ATCMD_Print(const char *format, ...) {
- 1444              	 .loc 1 399 0
+ 406:../at_commander.c **** 
+ 407:../at_commander.c **** /*
+ 408:../at_commander.c ****  * Function: ATCMD_Print
+ 409:../at_commander.c ****  * ---------------------
+ 410:../at_commander.c ****  * Sends formatted AT commands to the module, handles transmission and reception,
+ 411:../at_commander.c ****  * and checks for potential errors.
+ 412:../at_commander.c ****  */
+ 413:../at_commander.c **** void ATCMD_Print(const char *format, ...) {
+ 1444              	 .loc 1 413 0
  1445              	 .cfi_startproc
  1446              	 
  1447              	 
@@ -2067,207 +2081,207 @@
  1457              	 .cfi_def_cfa_offset 24
  1458              	 .cfi_offset 7,-24
  1459              	 .cfi_offset 14,-20
- 1460 0004 88B0     	 sub sp,sp,#32
+ 1460 0004 86B0     	 sub sp,sp,#24
  1461              	.LCFI45:
- 1462              	 .cfi_def_cfa_offset 56
+ 1462              	 .cfi_def_cfa_offset 48
  1463 0006 00AF     	 add r7,sp,#0
  1464              	.LCFI46:
  1465              	 .cfi_def_cfa_register 7
- 400:../at_commander.c **** 
- 401:../at_commander.c **** 	size_t len = 0;
- 1466              	 .loc 1 401 0
+ 414:../at_commander.c **** 
+ 415:../at_commander.c **** 	size_t len = 0;
+ 1466              	 .loc 1 415 0
  1467 0008 0023     	 movs r3,#0
- 1468 000a FB60     	 str r3,[r7,#12]
- 402:../at_commander.c **** 	va_list args = { 0 };
- 1469              	 .loc 1 402 0
+ 1468 000a BB60     	 str r3,[r7,#8]
+ 416:../at_commander.c **** 	va_list args = { 0 };
+ 1469              	 .loc 1 416 0
  1470 000c 0023     	 movs r3,#0
- 1471 000e 7B60     	 str r3,[r7,#4]
- 403:../at_commander.c **** 
- 404:../at_commander.c **** 	int ret_length = 0;
- 1472              	 .loc 1 404 0
+ 1471 000e 3B60     	 str r3,[r7]
+ 417:../at_commander.c **** 
+ 418:../at_commander.c **** 	int ret_length = 0;
+ 1472              	 .loc 1 418 0
  1473 0010 0023     	 movs r3,#0
- 1474 0012 FB61     	 str r3,[r7,#28]
- 405:../at_commander.c **** 	va_start(args, format);
- 1475              	 .loc 1 405 0
- 1476 0014 07F12C03 	 add r3,r7,#44
- 1477 0018 7B60     	 str r3,[r7,#4]
- 406:../at_commander.c **** 	bool abort = false;
- 1478              	 .loc 1 406 0
+ 1474 0012 7B61     	 str r3,[r7,#20]
+ 419:../at_commander.c **** 	va_start(args, format);
+ 1475              	 .loc 1 419 0
+ 1476 0014 07F12403 	 add r3,r7,#36
+ 1477 0018 3B60     	 str r3,[r7]
+ 420:../at_commander.c **** 	bool abort = false;
+ 1478              	 .loc 1 420 0
  1479 001a 0023     	 movs r3,#0
- 1480 001c FB76     	 strb r3,[r7,#27]
- 407:../at_commander.c **** 
- 408:../at_commander.c **** 	len = vsnprintf(ATCMD_TransmittBuffer, ATCMD_PRINT_BUFFER_SIZE, format,
- 1481              	 .loc 1 408 0
- 1482 001e 4A48     	 ldr r0,.L103
+ 1480 001c FB74     	 strb r3,[r7,#19]
+ 421:../at_commander.c **** 
+ 422:../at_commander.c **** 	len = vsnprintf(ATCMD_TransmittBuffer, ATCMD_PRINT_BUFFER_SIZE, format,
+ 1481              	 .loc 1 422 0
+ 1482 001e 3E48     	 ldr r0,.L100
  1483 0020 4FF40061 	 mov r1,#2048
- 1484 0024 BA6A     	 ldr r2,[r7,#40]
- 1485 0026 7B68     	 ldr r3,[r7,#4]
+ 1484 0024 3A6A     	 ldr r2,[r7,#32]
+ 1485 0026 3B68     	 ldr r3,[r7]
  1486 0028 FFF7FEFF 	 bl vsnprintf
  1487 002c 0346     	 mov r3,r0
- 1488 002e FB60     	 str r3,[r7,#12]
- 409:../at_commander.c **** 			args);
- 410:../at_commander.c **** 
- 411:../at_commander.c **** 	va_end(args);
- 412:../at_commander.c **** 
- 413:../at_commander.c **** 	ATCMD_Error_Code = 0;
- 1489              	 .loc 1 413 0
- 1490 0030 464B     	 ldr r3,.L103+4
+ 1488 002e BB60     	 str r3,[r7,#8]
+ 423:../at_commander.c **** 			args);
+ 424:../at_commander.c **** 
+ 425:../at_commander.c **** 	va_end(args);
+ 426:../at_commander.c **** 
+ 427:../at_commander.c **** 	ATCMD_Error_Code = 0;
+ 1489              	 .loc 1 427 0
+ 1490 0030 3A4B     	 ldr r3,.L100+4
  1491 0032 0022     	 movs r2,#0
  1492 0034 1A70     	 strb r2,[r3]
- 414:../at_commander.c **** 
- 415:../at_commander.c **** 	if ((len > 0) && (len < ATCMD_PRINT_BUFFER_SIZE)) {
- 1493              	 .loc 1 415 0
- 1494 0036 FB68     	 ldr r3,[r7,#12]
+ 428:../at_commander.c **** 
+ 429:../at_commander.c **** 	if ((len > 0) && (len < ATCMD_PRINT_BUFFER_SIZE)) {
+ 1493              	 .loc 1 429 0
+ 1494 0036 BB68     	 ldr r3,[r7,#8]
  1495 0038 002B     	 cmp r3,#0
  1496 003a 08D0     	 beq .L86
- 1497              	 .loc 1 415 0 is_stmt 0 discriminator 1
- 1498 003c FB68     	 ldr r3,[r7,#12]
+ 1497              	 .loc 1 429 0 is_stmt 0 discriminator 1
+ 1498 003c BB68     	 ldr r3,[r7,#8]
  1499 003e B3F5006F 	 cmp r3,#2048
  1500 0042 04D2     	 bcs .L86
- 416:../at_commander.c **** 		ATCMD_TransmittBuffer[len] = '\0';
- 1501              	 .loc 1 416 0 is_stmt 1
- 1502 0044 404A     	 ldr r2,.L103
- 1503 0046 FB68     	 ldr r3,[r7,#12]
+ 430:../at_commander.c **** 		ATCMD_TransmittBuffer[len] = '\0';
+ 1501              	 .loc 1 430 0 is_stmt 1
+ 1502 0044 344A     	 ldr r2,.L100
+ 1503 0046 BB68     	 ldr r3,[r7,#8]
  1504 0048 1344     	 add r3,r3,r2
  1505 004a 0022     	 movs r2,#0
  1506 004c 1A70     	 strb r2,[r3]
  1507              	.L86:
- 417:../at_commander.c **** 	}
- 418:../at_commander.c **** 
- 419:../at_commander.c **** 	UART_STATUS_t tx_status = UART_Transmit(&UART_0,
- 1508              	 .loc 1 419 0
- 1509 004e 4048     	 ldr r0,.L103+8
- 1510 0050 3D49     	 ldr r1,.L103
- 1511 0052 FA68     	 ldr r2,[r7,#12]
+ 431:../at_commander.c **** 	}
+ 432:../at_commander.c **** 
+ 433:../at_commander.c **** 	UART_STATUS_t tx_status = UART_Transmit(&UART_0,
+ 1508              	 .loc 1 433 0
+ 1509 004e 3448     	 ldr r0,.L100+8
+ 1510 0050 3149     	 ldr r1,.L100
+ 1511 0052 BA68     	 ldr r2,[r7,#8]
  1512 0054 FFF7FEFF 	 bl UART_Transmit
  1513 0058 0346     	 mov r3,r0
- 1514 005a FB72     	 strb r3,[r7,#11]
- 420:../at_commander.c **** 			(uint8_t *) &ATCMD_TransmittBuffer[0], len);
- 421:../at_commander.c **** 	if (tx_status != UART_STATUS_SUCCESS) {
- 1515              	 .loc 1 421 0
- 1516 005c FB7A     	 ldrb r3,[r7,#11]
+ 1514 005a FB71     	 strb r3,[r7,#7]
+ 434:../at_commander.c **** 			(uint8_t *) &ATCMD_TransmittBuffer[0], len);
+ 435:../at_commander.c **** 	if (tx_status != UART_STATUS_SUCCESS) {
+ 1515              	 .loc 1 435 0
+ 1516 005c FB79     	 ldrb r3,[r7,#7]
  1517 005e 002B     	 cmp r3,#0
  1518 0060 03D0     	 beq .L87
- 422:../at_commander.c **** 		ATCMD_Error_Code = 1;
- 1519              	 .loc 1 422 0
- 1520 0062 3A4B     	 ldr r3,.L103+4
+ 436:../at_commander.c **** 		ATCMD_Error_Code = 1;
+ 1519              	 .loc 1 436 0
+ 1520 0062 2E4B     	 ldr r3,.L100+4
  1521 0064 0122     	 movs r2,#1
  1522 0066 1A70     	 strb r2,[r3]
- 423:../at_commander.c **** 		return;
- 1523              	 .loc 1 423 0
- 1524 0068 68E0     	 b .L85
+ 437:../at_commander.c **** 		return;
+ 1523              	 .loc 1 437 0
+ 1524 0068 50E0     	 b .L85
  1525              	.L87:
- 424:../at_commander.c **** 	}
- 425:../at_commander.c **** 
- 426:../at_commander.c **** 	setTimeout(2);
- 1526              	 .loc 1 426 0
+ 438:../at_commander.c **** 	}
+ 439:../at_commander.c **** 
+ 440:../at_commander.c **** 	setTimeout(2);
+ 1526              	 .loc 1 440 0
  1527 006a 0220     	 movs r0,#2
  1528 006c FFF7FEFF 	 bl setTimeout
- 427:../at_commander.c **** 	while (bTxReady == false) {
- 1529              	 .loc 1 427 0
+ 441:../at_commander.c **** 	while (bTxReady == false) {
+ 1529              	 .loc 1 441 0
  1530 0070 05E0     	 b .L89
  1531              	.L90:
- 428:../at_commander.c **** 		if (isTimeout()) {
- 1532              	 .loc 1 428 0
+ 442:../at_commander.c **** 		if (isTimeout()) {
+ 1532              	 .loc 1 442 0
  1533 0072 FFF7FEFF 	 bl isTimeout
  1534 0076 0346     	 mov r3,r0
  1535 0078 002B     	 cmp r3,#0
  1536 007a 00D0     	 beq .L89
- 429:../at_commander.c **** 			return;
- 1537              	 .loc 1 429 0
- 1538 007c 5EE0     	 b .L85
+ 443:../at_commander.c **** 			return;
+ 1537              	 .loc 1 443 0
+ 1538 007c 46E0     	 b .L85
  1539              	.L89:
- 427:../at_commander.c **** 	while (bTxReady == false) {
- 1540              	 .loc 1 427 0
- 1541 007e 354B     	 ldr r3,.L103+12
+ 441:../at_commander.c **** 	while (bTxReady == false) {
+ 1540              	 .loc 1 441 0
+ 1541 007e 294B     	 ldr r3,.L100+12
  1542 0080 1B78     	 ldrb r3,[r3]
  1543 0082 DBB2     	 uxtb r3,r3
  1544 0084 83F00103 	 eor r3,r3,#1
  1545 0088 DBB2     	 uxtb r3,r3
  1546 008a 002B     	 cmp r3,#0
  1547 008c F1D1     	 bne .L90
- 430:../at_commander.c **** 		}
- 431:../at_commander.c **** 	}
- 432:../at_commander.c **** 	bTxReady = false;
- 1548              	 .loc 1 432 0
- 1549 008e 314B     	 ldr r3,.L103+12
+ 444:../at_commander.c **** 		}
+ 445:../at_commander.c **** 	}
+ 446:../at_commander.c **** 	bTxReady = false;
+ 1548              	 .loc 1 446 0
+ 1549 008e 254B     	 ldr r3,.L100+12
  1550 0090 0022     	 movs r2,#0
  1551 0092 1A70     	 strb r2,[r3]
  1552              	.LBB2:
- 433:../at_commander.c **** 
- 434:../at_commander.c **** 	// MVo: maximum number of bytes to receive is buffer size, not len of transmitted command
- 435:../at_commander.c **** 	for (int ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
- 1553              	 .loc 1 435 0
+ 447:../at_commander.c **** 
+ 448:../at_commander.c **** 	// MVo: maximum number of bytes to receive is buffer size, not len of transmitted command
+ 449:../at_commander.c **** 	for (int ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
+ 1553              	 .loc 1 449 0
  1554 0094 0023     	 movs r3,#0
- 1555 0096 7B61     	 str r3,[r7,#20]
+ 1555 0096 FB60     	 str r3,[r7,#12]
  1556 0098 34E0     	 b .L91
  1557              	.L98:
  1558              	.LBB3:
- 436:../at_commander.c **** 		bRxReady = false;
- 1559              	 .loc 1 436 0
- 1560 009a 2F4B     	 ldr r3,.L103+16
+ 450:../at_commander.c **** 		bRxReady = false;
+ 1559              	 .loc 1 450 0
+ 1560 009a 234B     	 ldr r3,.L100+16
  1561 009c 0022     	 movs r2,#0
  1562 009e 1A70     	 strb r2,[r3]
- 437:../at_commander.c **** 		UART_STATUS_t rx_status = UART_Receive(&UART_0,
- 438:../at_commander.c **** 				(uint8_t *) &ATCMD_ReceiveBuffer[ix], 1);
- 1563              	 .loc 1 438 0
- 1564 00a0 7B69     	 ldr r3,[r7,#20]
- 1565 00a2 2E4A     	 ldr r2,.L103+20
+ 451:../at_commander.c **** 		UART_STATUS_t rx_status = UART_Receive(&UART_0,
+ 452:../at_commander.c **** 				(uint8_t *) &ATCMD_ReceiveBuffer[ix], 1);
+ 1563              	 .loc 1 452 0
+ 1564 00a0 FB68     	 ldr r3,[r7,#12]
+ 1565 00a2 224A     	 ldr r2,.L100+20
  1566 00a4 1344     	 add r3,r3,r2
- 437:../at_commander.c **** 		UART_STATUS_t rx_status = UART_Receive(&UART_0,
- 1567              	 .loc 1 437 0
- 1568 00a6 2A48     	 ldr r0,.L103+8
+ 451:../at_commander.c **** 		UART_STATUS_t rx_status = UART_Receive(&UART_0,
+ 1567              	 .loc 1 451 0
+ 1568 00a6 1E48     	 ldr r0,.L100+8
  1569 00a8 1946     	 mov r1,r3
  1570 00aa 0122     	 movs r2,#1
  1571 00ac FFF7FEFF 	 bl UART_Receive
  1572 00b0 0346     	 mov r3,r0
- 1573 00b2 BB72     	 strb r3,[r7,#10]
- 439:../at_commander.c **** 		if (rx_status != UART_STATUS_SUCCESS) {
- 1574              	 .loc 1 439 0
- 1575 00b4 BB7A     	 ldrb r3,[r7,#10]
+ 1573 00b2 BB71     	 strb r3,[r7,#6]
+ 453:../at_commander.c **** 		if (rx_status != UART_STATUS_SUCCESS) {
+ 1574              	 .loc 1 453 0
+ 1575 00b4 BB79     	 ldrb r3,[r7,#6]
  1576 00b6 002B     	 cmp r3,#0
  1577 00b8 03D0     	 beq .L92
- 440:../at_commander.c **** 			ATCMD_Error_Code = 1;
- 1578              	 .loc 1 440 0
- 1579 00ba 244B     	 ldr r3,.L103+4
+ 454:../at_commander.c **** 			ATCMD_Error_Code = 1;
+ 1578              	 .loc 1 454 0
+ 1579 00ba 184B     	 ldr r3,.L100+4
  1580 00bc 0122     	 movs r2,#1
  1581 00be 1A70     	 strb r2,[r3]
- 441:../at_commander.c **** 			return;
- 1582              	 .loc 1 441 0
- 1583 00c0 3CE0     	 b .L85
+ 455:../at_commander.c **** 			return;
+ 1582              	 .loc 1 455 0
+ 1583 00c0 24E0     	 b .L85
  1584              	.L92:
- 442:../at_commander.c **** 		}
- 443:../at_commander.c **** 
- 444:../at_commander.c **** 		setTimeout(3);
- 1585              	 .loc 1 444 0
+ 456:../at_commander.c **** 		}
+ 457:../at_commander.c **** 
+ 458:../at_commander.c **** 		setTimeout(3);
+ 1585              	 .loc 1 458 0
  1586 00c2 0320     	 movs r0,#3
  1587 00c4 FFF7FEFF 	 bl setTimeout
- 445:../at_commander.c **** 		while (bRxReady == false) {
- 1588              	 .loc 1 445 0
+ 459:../at_commander.c **** 		while (bRxReady == false) {
+ 1588              	 .loc 1 459 0
  1589 00c8 0AE0     	 b .L93
  1590              	.L95:
- 446:../at_commander.c **** 
- 447:../at_commander.c **** 			if (isTimeout()) {
- 1591              	 .loc 1 447 0
+ 460:../at_commander.c **** 
+ 461:../at_commander.c **** 			if (isTimeout()) {
+ 1591              	 .loc 1 461 0
  1592 00ca FFF7FEFF 	 bl isTimeout
  1593 00ce 0346     	 mov r3,r0
  1594 00d0 002B     	 cmp r3,#0
  1595 00d2 05D0     	 beq .L93
- 448:../at_commander.c **** 				UART_AbortReceive(&UART_0);
- 1596              	 .loc 1 448 0
- 1597 00d4 1E48     	 ldr r0,.L103+8
+ 462:../at_commander.c **** 				UART_AbortReceive(&UART_0);
+ 1596              	 .loc 1 462 0
+ 1597 00d4 1248     	 ldr r0,.L100+8
  1598 00d6 FFF7FEFF 	 bl UART_AbortReceive
- 449:../at_commander.c **** 				abort = true;
- 1599              	 .loc 1 449 0
+ 463:../at_commander.c **** 				abort = true;
+ 1599              	 .loc 1 463 0
  1600 00da 0123     	 movs r3,#1
- 1601 00dc FB76     	 strb r3,[r7,#27]
- 450:../at_commander.c **** 				break;
- 1602              	 .loc 1 450 0
+ 1601 00dc FB74     	 strb r3,[r7,#19]
+ 464:../at_commander.c **** 				break;
+ 1602              	 .loc 1 464 0
  1603 00de 07E0     	 b .L94
  1604              	.L93:
- 445:../at_commander.c **** 
- 1605              	 .loc 1 445 0
- 1606 00e0 1D4B     	 ldr r3,.L103+16
+ 459:../at_commander.c **** 
+ 1605              	 .loc 1 459 0
+ 1606 00e0 114B     	 ldr r3,.L100+16
  1607 00e2 1B78     	 ldrb r3,[r3]
  1608 00e4 DBB2     	 uxtb r3,r3
  1609 00e6 83F00103 	 eor r3,r3,#1
@@ -2275,408 +2289,371 @@
  1611 00ec 002B     	 cmp r3,#0
  1612 00ee ECD1     	 bne .L95
  1613              	.L94:
- 451:../at_commander.c **** 				//return;
- 452:../at_commander.c **** 			}
- 453:../at_commander.c **** 		}
- 454:../at_commander.c **** 
- 455:../at_commander.c **** 		ret_length++;
- 1614              	 .loc 1 455 0
- 1615 00f0 FB69     	 ldr r3,[r7,#28]
+ 465:../at_commander.c **** 				//return;
+ 466:../at_commander.c **** 			}
+ 467:../at_commander.c **** 		}
+ 468:../at_commander.c **** 
+ 469:../at_commander.c **** 		ret_length++;
+ 1614              	 .loc 1 469 0
+ 1615 00f0 7B69     	 ldr r3,[r7,#20]
  1616 00f2 0133     	 adds r3,r3,#1
- 1617 00f4 FB61     	 str r3,[r7,#28]
- 456:../at_commander.c **** 
- 457:../at_commander.c **** 		if (abort)
- 1618              	 .loc 1 457 0
- 1619 00f6 FB7E     	 ldrb r3,[r7,#27]
+ 1617 00f4 7B61     	 str r3,[r7,#20]
+ 470:../at_commander.c **** 
+ 471:../at_commander.c **** 		if (abort)
+ 1618              	 .loc 1 471 0
+ 1619 00f6 FB7C     	 ldrb r3,[r7,#19]
  1620 00f8 002B     	 cmp r3,#0
  1621 00fa 00D0     	 beq .L96
- 458:../at_commander.c **** 			break;
- 1622              	 .loc 1 458 0
+ 472:../at_commander.c **** 			break;
+ 1622              	 .loc 1 472 0
  1623 00fc 06E0     	 b .L97
  1624              	.L96:
  1625              	.LBE3:
- 435:../at_commander.c **** 		bRxReady = false;
- 1626              	 .loc 1 435 0 discriminator 2
- 1627 00fe 7B69     	 ldr r3,[r7,#20]
+ 449:../at_commander.c **** 		bRxReady = false;
+ 1626              	 .loc 1 449 0 discriminator 2
+ 1627 00fe FB68     	 ldr r3,[r7,#12]
  1628 0100 0133     	 adds r3,r3,#1
- 1629 0102 7B61     	 str r3,[r7,#20]
+ 1629 0102 FB60     	 str r3,[r7,#12]
  1630              	.L91:
- 435:../at_commander.c **** 		bRxReady = false;
- 1631              	 .loc 1 435 0 is_stmt 0 discriminator 1
- 1632 0104 7B69     	 ldr r3,[r7,#20]
+ 449:../at_commander.c **** 		bRxReady = false;
+ 1631              	 .loc 1 449 0 is_stmt 0 discriminator 1
+ 1632 0104 FB68     	 ldr r3,[r7,#12]
  1633 0106 B3F5806F 	 cmp r3,#1024
  1634 010a C6DB     	 blt .L98
  1635              	.L97:
- 1636              	.LBE2:
- 1637              	.LBB4:
- 459:../at_commander.c **** 
- 460:../at_commander.c **** 	}
- 461:../at_commander.c **** 
- 462:../at_commander.c **** 	// MVo: check only for length of received string
- 463:../at_commander.c **** 	for (int ix = 0; ix < ret_length; ix++) {
- 1638              	 .loc 1 463 0 is_stmt 1
- 1639 010c 0023     	 movs r3,#0
- 1640 010e 3B61     	 str r3,[r7,#16]
- 1641 0110 10E0     	 b .L99
- 1642              	.L101:
- 464:../at_commander.c **** 		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
- 1643              	 .loc 1 464 0
- 1644 0112 134A     	 ldr r2,.L103+24
- 1645 0114 3B69     	 ldr r3,[r7,#16]
- 1646 0116 1344     	 add r3,r3,r2
- 1647 0118 1A78     	 ldrb r2,[r3]
- 1648 011a 1049     	 ldr r1,.L103+20
- 1649 011c 3B69     	 ldr r3,[r7,#16]
- 1650 011e 0B44     	 add r3,r3,r1
- 1651 0120 1B78     	 ldrb r3,[r3]
- 1652 0122 9A42     	 cmp r2,r3
- 1653 0124 03D0     	 beq .L100
- 465:../at_commander.c **** 			ATCMD_Error_Code = 1;
- 1654              	 .loc 1 465 0
- 1655 0126 094B     	 ldr r3,.L103+4
- 1656 0128 0122     	 movs r2,#1
- 1657 012a 1A70     	 strb r2,[r3]
- 466:../at_commander.c **** 			return;
- 1658              	 .loc 1 466 0
- 1659 012c 06E0     	 b .L85
- 1660              	.L100:
- 463:../at_commander.c **** 		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
- 1661              	 .loc 1 463 0 discriminator 2
- 1662 012e 3B69     	 ldr r3,[r7,#16]
- 1663 0130 0133     	 adds r3,r3,#1
- 1664 0132 3B61     	 str r3,[r7,#16]
- 1665              	.L99:
- 463:../at_commander.c **** 		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
- 1666              	 .loc 1 463 0 is_stmt 0 discriminator 1
- 1667 0134 3A69     	 ldr r2,[r7,#16]
- 1668 0136 FB69     	 ldr r3,[r7,#28]
- 1669 0138 9A42     	 cmp r2,r3
- 1670 013a EADB     	 blt .L101
- 1671              	.L85:
- 1672              	.LBE4:
- 467:../at_commander.c **** 		}
- 468:../at_commander.c **** 	}
- 469:../at_commander.c **** }
- 1673              	 .loc 1 469 0 is_stmt 1
- 1674 013c 2037     	 adds r7,r7,#32
- 1675              	.LCFI47:
- 1676              	 .cfi_def_cfa_offset 24
- 1677 013e BD46     	 mov sp,r7
- 1678              	.LCFI48:
- 1679              	 .cfi_def_cfa_register 13
- 1680              	 
- 1681 0140 BDE88040 	 pop {r7,lr}
- 1682              	.LCFI49:
- 1683              	 .cfi_restore 14
- 1684              	 .cfi_restore 7
- 1685              	 .cfi_def_cfa_offset 16
- 1686 0144 04B0     	 add sp,sp,#16
- 1687              	.LCFI50:
- 1688              	 .cfi_restore 3
- 1689              	 .cfi_restore 2
- 1690              	 .cfi_restore 1
- 1691              	 .cfi_restore 0
- 1692              	 .cfi_def_cfa_offset 0
- 1693 0146 7047     	 bx lr
- 1694              	.L104:
- 1695              	 .align 2
- 1696              	.L103:
- 1697 0148 00000000 	 .word ATCMD_TransmittBuffer
- 1698 014c 00000000 	 .word ATCMD_Error_Code
- 1699 0150 00000000 	 .word UART_0
- 1700 0154 00000000 	 .word bTxReady
- 1701 0158 00000000 	 .word bRxReady
- 1702 015c 00000000 	 .word ATCMD_ReceiveBuffer
- 1703 0160 00000000 	 .word okResponse
- 1704              	 .cfi_endproc
- 1705              	.LFE362:
- 1707              	 .section .text.ATCMD_ReadLine,"ax",%progbits
- 1708              	 .align 2
- 1709              	 .global ATCMD_ReadLine
- 1710              	 .thumb
- 1711              	 .thumb_func
- 1713              	ATCMD_ReadLine:
- 1714              	.LFB363:
- 470:../at_commander.c **** 
- 471:../at_commander.c **** /*
- 472:../at_commander.c ****  * Function: ATCMD_ReadLine
- 473:../at_commander.c ****  * ------------------------
- 474:../at_commander.c ****  * Reads a line from the receive buffer and returns the number of characters read.
- 475:../at_commander.c ****  */
- 476:../at_commander.c **** uint8_t ATCMD_ReadLine(void) {
- 1715              	 .loc 1 476 0
- 1716              	 .cfi_startproc
- 1717              	 
- 1718              	 
- 1719 0000 80B5     	 push {r7,lr}
- 1720              	.LCFI51:
- 1721              	 .cfi_def_cfa_offset 8
- 1722              	 .cfi_offset 7,-8
- 1723              	 .cfi_offset 14,-4
- 1724 0002 82B0     	 sub sp,sp,#8
- 1725              	.LCFI52:
- 1726              	 .cfi_def_cfa_offset 16
- 1727 0004 00AF     	 add r7,sp,#0
- 1728              	.LCFI53:
- 1729              	 .cfi_def_cfa_register 7
- 477:../at_commander.c **** 
- 478:../at_commander.c **** 	uint8_t ix;
- 479:../at_commander.c **** 	uint8_t byte;
- 480:../at_commander.c **** 
- 481:../at_commander.c **** 	for (ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
- 1730              	 .loc 1 481 0
- 1731 0006 0023     	 movs r3,#0
- 1732 0008 FB71     	 strb r3,[r7,#7]
- 1733              	.L112:
- 1734              	.LBB5:
- 482:../at_commander.c **** 
- 483:../at_commander.c **** 		setTimeout(2);
- 1735              	 .loc 1 483 0
- 1736 000a 0220     	 movs r0,#2
- 1737 000c FFF7FEFF 	 bl setTimeout
- 484:../at_commander.c **** 		while (bRxReady == false) {
- 1738              	 .loc 1 484 0
- 1739 0010 06E0     	 b .L106
- 1740              	.L108:
- 485:../at_commander.c **** 			if (isTimeout()) {
- 1741              	 .loc 1 485 0
- 1742 0012 FFF7FEFF 	 bl isTimeout
- 1743 0016 0346     	 mov r3,r0
- 1744 0018 002B     	 cmp r3,#0
- 1745 001a 01D0     	 beq .L106
- 486:../at_commander.c **** 				return 0;
- 1746              	 .loc 1 486 0
- 1747 001c 0023     	 movs r3,#0
- 1748 001e 26E0     	 b .L113
- 1749              	.L106:
- 484:../at_commander.c **** 		while (bRxReady == false) {
- 1750              	 .loc 1 484 0
- 1751 0020 154B     	 ldr r3,.L114
- 1752 0022 1B78     	 ldrb r3,[r3]
- 1753 0024 DBB2     	 uxtb r3,r3
- 1754 0026 83F00103 	 eor r3,r3,#1
- 1755 002a DBB2     	 uxtb r3,r3
- 1756 002c 002B     	 cmp r3,#0
- 1757 002e F0D1     	 bne .L108
- 487:../at_commander.c **** 			}
- 488:../at_commander.c **** 		}
- 489:../at_commander.c **** 
- 490:../at_commander.c **** 		UART_STATUS_t rx_status = UART_StartReceiveIRQ(&UART_0, &byte, 1);
- 1758              	 .loc 1 490 0
- 1759 0030 7B1D     	 adds r3,r7,#5
- 1760 0032 1248     	 ldr r0,.L114+4
- 1761 0034 1946     	 mov r1,r3
- 1762 0036 0122     	 movs r2,#1
- 1763 0038 FFF7FEFF 	 bl UART_StartReceiveIRQ
- 1764 003c 0346     	 mov r3,r0
- 1765 003e BB71     	 strb r3,[r7,#6]
- 491:../at_commander.c **** 		if (rx_status != UART_STATUS_SUCCESS) {
- 1766              	 .loc 1 491 0
- 1767 0040 BB79     	 ldrb r3,[r7,#6]
- 1768 0042 002B     	 cmp r3,#0
- 1769 0044 01D0     	 beq .L109
- 492:../at_commander.c **** 			return 0;
- 1770              	 .loc 1 492 0
- 1771 0046 0023     	 movs r3,#0
- 1772 0048 11E0     	 b .L113
- 1773              	.L109:
- 493:../at_commander.c **** 		}
+ 1636              	.L85:
+ 1637              	.LBE2:
+ 473:../at_commander.c **** 
+ 474:../at_commander.c **** 	}
+ 475:../at_commander.c **** 
+ 476:../at_commander.c **** 	// MVo: check only for length of received string
+ 477:../at_commander.c **** 	/*for (int ix = 0; ix < ret_length; ix++) {
+ 478:../at_commander.c **** 		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
+ 479:../at_commander.c **** 			ATCMD_Error_Code = 1;
+ 480:../at_commander.c **** 			return;
+ 481:../at_commander.c **** 		}
+ 482:../at_commander.c **** 	}*/
+ 483:../at_commander.c **** }
+ 1638              	 .loc 1 483 0 is_stmt 1
+ 1639 010c 1837     	 adds r7,r7,#24
+ 1640              	.LCFI47:
+ 1641              	 .cfi_def_cfa_offset 24
+ 1642 010e BD46     	 mov sp,r7
+ 1643              	.LCFI48:
+ 1644              	 .cfi_def_cfa_register 13
+ 1645              	 
+ 1646 0110 BDE88040 	 pop {r7,lr}
+ 1647              	.LCFI49:
+ 1648              	 .cfi_restore 14
+ 1649              	 .cfi_restore 7
+ 1650              	 .cfi_def_cfa_offset 16
+ 1651 0114 04B0     	 add sp,sp,#16
+ 1652              	.LCFI50:
+ 1653              	 .cfi_restore 3
+ 1654              	 .cfi_restore 2
+ 1655              	 .cfi_restore 1
+ 1656              	 .cfi_restore 0
+ 1657              	 .cfi_def_cfa_offset 0
+ 1658 0116 7047     	 bx lr
+ 1659              	.L101:
+ 1660              	 .align 2
+ 1661              	.L100:
+ 1662 0118 00000000 	 .word ATCMD_TransmittBuffer
+ 1663 011c 00000000 	 .word ATCMD_Error_Code
+ 1664 0120 00000000 	 .word UART_0
+ 1665 0124 00000000 	 .word bTxReady
+ 1666 0128 00000000 	 .word bRxReady
+ 1667 012c 00000000 	 .word ATCMD_ReceiveBuffer
+ 1668              	 .cfi_endproc
+ 1669              	.LFE362:
+ 1671              	 .section .text.ATCMD_ReadLine,"ax",%progbits
+ 1672              	 .align 2
+ 1673              	 .global ATCMD_ReadLine
+ 1674              	 .thumb
+ 1675              	 .thumb_func
+ 1677              	ATCMD_ReadLine:
+ 1678              	.LFB363:
+ 484:../at_commander.c **** 
+ 485:../at_commander.c **** /*
+ 486:../at_commander.c ****  * Function: ATCMD_ReadLine
+ 487:../at_commander.c ****  * ------------------------
+ 488:../at_commander.c ****  * Reads a line from the receive buffer and returns the number of characters read.
+ 489:../at_commander.c ****  */
+ 490:../at_commander.c **** uint8_t ATCMD_ReadLine(void) {
+ 1679              	 .loc 1 490 0
+ 1680              	 .cfi_startproc
+ 1681              	 
+ 1682              	 
+ 1683 0000 80B5     	 push {r7,lr}
+ 1684              	.LCFI51:
+ 1685              	 .cfi_def_cfa_offset 8
+ 1686              	 .cfi_offset 7,-8
+ 1687              	 .cfi_offset 14,-4
+ 1688 0002 82B0     	 sub sp,sp,#8
+ 1689              	.LCFI52:
+ 1690              	 .cfi_def_cfa_offset 16
+ 1691 0004 00AF     	 add r7,sp,#0
+ 1692              	.LCFI53:
+ 1693              	 .cfi_def_cfa_register 7
+ 491:../at_commander.c **** 
+ 492:../at_commander.c **** 	uint8_t ix;
+ 493:../at_commander.c **** 	uint8_t byte;
  494:../at_commander.c **** 
- 495:../at_commander.c **** 		if (byte == '\n') {
- 1774              	 .loc 1 495 0
- 1775 004a 7B79     	 ldrb r3,[r7,#5]
- 1776 004c 0A2B     	 cmp r3,#10
- 1777 004e 06D1     	 bne .L110
- 496:../at_commander.c **** 			ATCMD_ReceiveBuffer[ix] = 0;
- 1778              	 .loc 1 496 0
- 1779 0050 FB79     	 ldrb r3,[r7,#7]
- 1780 0052 0B4A     	 ldr r2,.L114+8
- 1781 0054 0021     	 movs r1,#0
- 1782 0056 D154     	 strb r1,[r2,r3]
- 497:../at_commander.c **** 			break;
- 1783              	 .loc 1 497 0
- 1784 0058 00BF     	 nop
- 1785              	.LBE5:
- 498:../at_commander.c **** 		} else {
- 499:../at_commander.c **** 			ATCMD_ReceiveBuffer[ix] = byte;
- 500:../at_commander.c **** 		}
- 501:../at_commander.c **** 	}
- 502:../at_commander.c **** 	return ix;
- 1786              	 .loc 1 502 0
- 1787 005a FB79     	 ldrb r3,[r7,#7]
- 1788 005c 07E0     	 b .L113
- 1789              	.L110:
- 1790              	.LBB6:
- 499:../at_commander.c **** 		}
- 1791              	 .loc 1 499 0
- 1792 005e FB79     	 ldrb r3,[r7,#7]
- 1793 0060 7979     	 ldrb r1,[r7,#5]
- 1794 0062 074A     	 ldr r2,.L114+8
- 1795 0064 D154     	 strb r1,[r2,r3]
- 1796              	.LBE6:
- 481:../at_commander.c **** 
- 1797              	 .loc 1 481 0
- 1798 0066 FB79     	 ldrb r3,[r7,#7]
- 1799 0068 0133     	 adds r3,r3,#1
- 1800 006a FB71     	 strb r3,[r7,#7]
- 501:../at_commander.c **** 	return ix;
- 1801              	 .loc 1 501 0
- 1802 006c CDE7     	 b .L112
- 1803              	.L113:
- 503:../at_commander.c **** }
- 1804              	 .loc 1 503 0 discriminator 1
- 1805 006e 1846     	 mov r0,r3
- 1806 0070 0837     	 adds r7,r7,#8
- 1807              	.LCFI54:
- 1808              	 .cfi_def_cfa_offset 8
- 1809 0072 BD46     	 mov sp,r7
- 1810              	.LCFI55:
- 1811              	 .cfi_def_cfa_register 13
- 1812              	 
- 1813 0074 80BD     	 pop {r7,pc}
- 1814              	.L115:
- 1815 0076 00BF     	 .align 2
- 1816              	.L114:
- 1817 0078 00000000 	 .word bRxReady
- 1818 007c 00000000 	 .word UART_0
- 1819 0080 00000000 	 .word ATCMD_ReceiveBuffer
- 1820              	 .cfi_endproc
- 1821              	.LFE363:
- 1823              	 .section .text.ATCMD_strcon,"ax",%progbits
- 1824              	 .align 2
- 1825              	 .global ATCMD_strcon
- 1826              	 .thumb
- 1827              	 .thumb_func
- 1829              	ATCMD_strcon:
- 1830              	.LFB364:
- 504:../at_commander.c **** 
- 505:../at_commander.c **** /*
- 506:../at_commander.c ****  * Function: ATCMD_strcon
- 507:../at_commander.c ****  * ----------------------
- 508:../at_commander.c ****  * Compares two strings and returns 1 if they are equal, 0 otherwise.
- 509:../at_commander.c ****  */
- 510:../at_commander.c **** int ATCMD_strcon(char a[], char b[]) {
- 1831              	 .loc 1 510 0
- 1832              	 .cfi_startproc
- 1833              	 
- 1834              	 
- 1835              	 
- 1836 0000 80B4     	 push {r7}
- 1837              	.LCFI56:
- 1838              	 .cfi_def_cfa_offset 4
- 1839              	 .cfi_offset 7,-4
- 1840 0002 85B0     	 sub sp,sp,#20
- 1841              	.LCFI57:
- 1842              	 .cfi_def_cfa_offset 24
- 1843 0004 00AF     	 add r7,sp,#0
- 1844              	.LCFI58:
- 1845              	 .cfi_def_cfa_register 7
- 1846 0006 7860     	 str r0,[r7,#4]
- 1847 0008 3960     	 str r1,[r7]
- 511:../at_commander.c **** 	int i = 0;
- 1848              	 .loc 1 511 0
- 1849 000a 0023     	 movs r3,#0
- 1850 000c FB60     	 str r3,[r7,#12]
- 512:../at_commander.c **** 
- 513:../at_commander.c **** 	while (a[i] != '\0' && b[i] != '\0') {
- 1851              	 .loc 1 513 0
- 1852 000e 0DE0     	 b .L117
- 1853              	.L120:
- 514:../at_commander.c **** 		if (a[i] != b[i]) {
- 1854              	 .loc 1 514 0
- 1855 0010 FB68     	 ldr r3,[r7,#12]
- 1856 0012 7A68     	 ldr r2,[r7,#4]
- 1857 0014 1344     	 add r3,r3,r2
- 1858 0016 1A78     	 ldrb r2,[r3]
- 1859 0018 FB68     	 ldr r3,[r7,#12]
- 1860 001a 3968     	 ldr r1,[r7]
- 1861 001c 0B44     	 add r3,r3,r1
- 1862 001e 1B78     	 ldrb r3,[r3]
- 1863 0020 9A42     	 cmp r2,r3
- 1864 0022 00D0     	 beq .L118
- 515:../at_commander.c **** 			break;
- 1865              	 .loc 1 515 0
- 1866 0024 0EE0     	 b .L119
- 1867              	.L118:
- 516:../at_commander.c **** 		}
- 517:../at_commander.c **** 		i++;
- 1868              	 .loc 1 517 0
- 1869 0026 FB68     	 ldr r3,[r7,#12]
- 1870 0028 0133     	 adds r3,r3,#1
- 1871 002a FB60     	 str r3,[r7,#12]
- 1872              	.L117:
- 513:../at_commander.c **** 		if (a[i] != b[i]) {
- 1873              	 .loc 1 513 0
- 1874 002c FB68     	 ldr r3,[r7,#12]
- 1875 002e 7A68     	 ldr r2,[r7,#4]
- 1876 0030 1344     	 add r3,r3,r2
- 1877 0032 1B78     	 ldrb r3,[r3]
- 1878 0034 002B     	 cmp r3,#0
- 1879 0036 05D0     	 beq .L119
- 513:../at_commander.c **** 		if (a[i] != b[i]) {
- 1880              	 .loc 1 513 0 is_stmt 0 discriminator 1
- 1881 0038 FB68     	 ldr r3,[r7,#12]
- 1882 003a 3A68     	 ldr r2,[r7]
- 1883 003c 1344     	 add r3,r3,r2
- 1884 003e 1B78     	 ldrb r3,[r3]
- 1885 0040 002B     	 cmp r3,#0
- 1886 0042 E5D1     	 bne .L120
- 1887              	.L119:
- 518:../at_commander.c **** 	}
- 519:../at_commander.c **** 	if (b[i] == '\0') {
- 1888              	 .loc 1 519 0 is_stmt 1
- 1889 0044 FB68     	 ldr r3,[r7,#12]
- 1890 0046 3A68     	 ldr r2,[r7]
- 1891 0048 1344     	 add r3,r3,r2
- 1892 004a 1B78     	 ldrb r3,[r3]
- 1893 004c 002B     	 cmp r3,#0
- 1894 004e 01D1     	 bne .L121
- 520:../at_commander.c **** 		return 1;
- 1895              	 .loc 1 520 0
- 1896 0050 0123     	 movs r3,#1
- 1897 0052 00E0     	 b .L122
- 1898              	.L121:
- 521:../at_commander.c **** 	} else {
- 522:../at_commander.c **** 		return 0;
- 1899              	 .loc 1 522 0
- 1900 0054 0023     	 movs r3,#0
- 1901              	.L122:
- 523:../at_commander.c **** 	}
- 524:../at_commander.c **** }
- 1902              	 .loc 1 524 0
- 1903 0056 1846     	 mov r0,r3
- 1904 0058 1437     	 adds r7,r7,#20
- 1905              	.LCFI59:
- 1906              	 .cfi_def_cfa_offset 4
- 1907 005a BD46     	 mov sp,r7
- 1908              	.LCFI60:
- 1909              	 .cfi_def_cfa_register 13
- 1910              	 
- 1911 005c 5DF8047B 	 ldr r7,[sp],#4
- 1912              	.LCFI61:
- 1913              	 .cfi_restore 7
- 1914              	 .cfi_def_cfa_offset 0
- 1915 0060 7047     	 bx lr
- 1916              	 .cfi_endproc
- 1917              	.LFE364:
- 1919 0062 00BF     	 .text
- 1920              	.Letext0:
- 1921              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stdarg.h"
- 1922              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
- 1923              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
- 1924              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
- 1925              	 .file 6 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_gpio.h"
- 1926              	 .file 7 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc4_gpio.h"
- 1927              	 .file 8 "<built-in>"
- 1928              	 .file 9 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_usic.h"
- 1929              	 .file 10 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_uart.h"
- 1930              	 .file 11 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Dave/Generated/UART/uart.h"
- 1931              	 .file 12 "../at_commander.h"
- 1932              	 .file 13 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/cmsis_gcc.h"
- 1933              	 .file 14 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/core_cm4.h"
- 1934              	 .file 15 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
- 1935              	 .file 16 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Dave/Generated/UART/uart_extern.h"
- 1936              	 .file 17 "../app.h"
+ 495:../at_commander.c **** 	for (ix = 0; ix < ATCMD_RECEIVE_BUFFER_SIZE; ix++) {
+ 1694              	 .loc 1 495 0
+ 1695 0006 0023     	 movs r3,#0
+ 1696 0008 FB71     	 strb r3,[r7,#7]
+ 1697              	.L109:
+ 1698              	.LBB4:
+ 496:../at_commander.c **** 
+ 497:../at_commander.c **** 		setTimeout(2);
+ 1699              	 .loc 1 497 0
+ 1700 000a 0220     	 movs r0,#2
+ 1701 000c FFF7FEFF 	 bl setTimeout
+ 498:../at_commander.c **** 		while (bRxReady == false) {
+ 1702              	 .loc 1 498 0
+ 1703 0010 06E0     	 b .L103
+ 1704              	.L105:
+ 499:../at_commander.c **** 			if (isTimeout()) {
+ 1705              	 .loc 1 499 0
+ 1706 0012 FFF7FEFF 	 bl isTimeout
+ 1707 0016 0346     	 mov r3,r0
+ 1708 0018 002B     	 cmp r3,#0
+ 1709 001a 01D0     	 beq .L103
+ 500:../at_commander.c **** 				return 0;
+ 1710              	 .loc 1 500 0
+ 1711 001c 0023     	 movs r3,#0
+ 1712 001e 26E0     	 b .L110
+ 1713              	.L103:
+ 498:../at_commander.c **** 		while (bRxReady == false) {
+ 1714              	 .loc 1 498 0
+ 1715 0020 154B     	 ldr r3,.L111
+ 1716 0022 1B78     	 ldrb r3,[r3]
+ 1717 0024 DBB2     	 uxtb r3,r3
+ 1718 0026 83F00103 	 eor r3,r3,#1
+ 1719 002a DBB2     	 uxtb r3,r3
+ 1720 002c 002B     	 cmp r3,#0
+ 1721 002e F0D1     	 bne .L105
+ 501:../at_commander.c **** 			}
+ 502:../at_commander.c **** 		}
+ 503:../at_commander.c **** 
+ 504:../at_commander.c **** 		UART_STATUS_t rx_status = UART_StartReceiveIRQ(&UART_0, &byte, 1);
+ 1722              	 .loc 1 504 0
+ 1723 0030 7B1D     	 adds r3,r7,#5
+ 1724 0032 1248     	 ldr r0,.L111+4
+ 1725 0034 1946     	 mov r1,r3
+ 1726 0036 0122     	 movs r2,#1
+ 1727 0038 FFF7FEFF 	 bl UART_StartReceiveIRQ
+ 1728 003c 0346     	 mov r3,r0
+ 1729 003e BB71     	 strb r3,[r7,#6]
+ 505:../at_commander.c **** 		if (rx_status != UART_STATUS_SUCCESS) {
+ 1730              	 .loc 1 505 0
+ 1731 0040 BB79     	 ldrb r3,[r7,#6]
+ 1732 0042 002B     	 cmp r3,#0
+ 1733 0044 01D0     	 beq .L106
+ 506:../at_commander.c **** 			return 0;
+ 1734              	 .loc 1 506 0
+ 1735 0046 0023     	 movs r3,#0
+ 1736 0048 11E0     	 b .L110
+ 1737              	.L106:
+ 507:../at_commander.c **** 		}
+ 508:../at_commander.c **** 
+ 509:../at_commander.c **** 		if (byte == '\n') {
+ 1738              	 .loc 1 509 0
+ 1739 004a 7B79     	 ldrb r3,[r7,#5]
+ 1740 004c 0A2B     	 cmp r3,#10
+ 1741 004e 06D1     	 bne .L107
+ 510:../at_commander.c **** 			ATCMD_ReceiveBuffer[ix] = 0;
+ 1742              	 .loc 1 510 0
+ 1743 0050 FB79     	 ldrb r3,[r7,#7]
+ 1744 0052 0B4A     	 ldr r2,.L111+8
+ 1745 0054 0021     	 movs r1,#0
+ 1746 0056 D154     	 strb r1,[r2,r3]
+ 511:../at_commander.c **** 			break;
+ 1747              	 .loc 1 511 0
+ 1748 0058 00BF     	 nop
+ 1749              	.LBE4:
+ 512:../at_commander.c **** 		} else {
+ 513:../at_commander.c **** 			ATCMD_ReceiveBuffer[ix] = byte;
+ 514:../at_commander.c **** 		}
+ 515:../at_commander.c **** 	}
+ 516:../at_commander.c **** 	return ix;
+ 1750              	 .loc 1 516 0
+ 1751 005a FB79     	 ldrb r3,[r7,#7]
+ 1752 005c 07E0     	 b .L110
+ 1753              	.L107:
+ 1754              	.LBB5:
+ 513:../at_commander.c **** 		}
+ 1755              	 .loc 1 513 0
+ 1756 005e FB79     	 ldrb r3,[r7,#7]
+ 1757 0060 7979     	 ldrb r1,[r7,#5]
+ 1758 0062 074A     	 ldr r2,.L111+8
+ 1759 0064 D154     	 strb r1,[r2,r3]
+ 1760              	.LBE5:
+ 495:../at_commander.c **** 
+ 1761              	 .loc 1 495 0
+ 1762 0066 FB79     	 ldrb r3,[r7,#7]
+ 1763 0068 0133     	 adds r3,r3,#1
+ 1764 006a FB71     	 strb r3,[r7,#7]
+ 515:../at_commander.c **** 	return ix;
+ 1765              	 .loc 1 515 0
+ 1766 006c CDE7     	 b .L109
+ 1767              	.L110:
+ 517:../at_commander.c **** }
+ 1768              	 .loc 1 517 0 discriminator 1
+ 1769 006e 1846     	 mov r0,r3
+ 1770 0070 0837     	 adds r7,r7,#8
+ 1771              	.LCFI54:
+ 1772              	 .cfi_def_cfa_offset 8
+ 1773 0072 BD46     	 mov sp,r7
+ 1774              	.LCFI55:
+ 1775              	 .cfi_def_cfa_register 13
+ 1776              	 
+ 1777 0074 80BD     	 pop {r7,pc}
+ 1778              	.L112:
+ 1779 0076 00BF     	 .align 2
+ 1780              	.L111:
+ 1781 0078 00000000 	 .word bRxReady
+ 1782 007c 00000000 	 .word UART_0
+ 1783 0080 00000000 	 .word ATCMD_ReceiveBuffer
+ 1784              	 .cfi_endproc
+ 1785              	.LFE363:
+ 1787              	 .section .text.ATCMD_strcon,"ax",%progbits
+ 1788              	 .align 2
+ 1789              	 .global ATCMD_strcon
+ 1790              	 .thumb
+ 1791              	 .thumb_func
+ 1793              	ATCMD_strcon:
+ 1794              	.LFB364:
+ 518:../at_commander.c **** 
+ 519:../at_commander.c **** /*
+ 520:../at_commander.c ****  * Function: ATCMD_strcon
+ 521:../at_commander.c ****  * ----------------------
+ 522:../at_commander.c ****  * Compares two strings and returns 1 if they are equal, 0 otherwise.
+ 523:../at_commander.c ****  */
+ 524:../at_commander.c **** int ATCMD_strcon(char a[], char b[]) {
+ 1795              	 .loc 1 524 0
+ 1796              	 .cfi_startproc
+ 1797              	 
+ 1798              	 
+ 1799              	 
+ 1800 0000 80B4     	 push {r7}
+ 1801              	.LCFI56:
+ 1802              	 .cfi_def_cfa_offset 4
+ 1803              	 .cfi_offset 7,-4
+ 1804 0002 85B0     	 sub sp,sp,#20
+ 1805              	.LCFI57:
+ 1806              	 .cfi_def_cfa_offset 24
+ 1807 0004 00AF     	 add r7,sp,#0
+ 1808              	.LCFI58:
+ 1809              	 .cfi_def_cfa_register 7
+ 1810 0006 7860     	 str r0,[r7,#4]
+ 1811 0008 3960     	 str r1,[r7]
+ 525:../at_commander.c **** 
+ 526:../at_commander.c **** 	int i = 0;
+ 1812              	 .loc 1 526 0
+ 1813 000a 0023     	 movs r3,#0
+ 1814 000c FB60     	 str r3,[r7,#12]
+ 527:../at_commander.c **** 
+ 528:../at_commander.c **** 	while (a[i] != '\0' && b[i] != '\0') {
+ 1815              	 .loc 1 528 0
+ 1816 000e 0DE0     	 b .L114
+ 1817              	.L117:
+ 529:../at_commander.c **** 		if (a[i] != b[i]) {
+ 1818              	 .loc 1 529 0
+ 1819 0010 FB68     	 ldr r3,[r7,#12]
+ 1820 0012 7A68     	 ldr r2,[r7,#4]
+ 1821 0014 1344     	 add r3,r3,r2
+ 1822 0016 1A78     	 ldrb r2,[r3]
+ 1823 0018 FB68     	 ldr r3,[r7,#12]
+ 1824 001a 3968     	 ldr r1,[r7]
+ 1825 001c 0B44     	 add r3,r3,r1
+ 1826 001e 1B78     	 ldrb r3,[r3]
+ 1827 0020 9A42     	 cmp r2,r3
+ 1828 0022 00D0     	 beq .L115
+ 530:../at_commander.c **** 			break;
+ 1829              	 .loc 1 530 0
+ 1830 0024 0EE0     	 b .L116
+ 1831              	.L115:
+ 531:../at_commander.c **** 		}
+ 532:../at_commander.c **** 		i++;
+ 1832              	 .loc 1 532 0
+ 1833 0026 FB68     	 ldr r3,[r7,#12]
+ 1834 0028 0133     	 adds r3,r3,#1
+ 1835 002a FB60     	 str r3,[r7,#12]
+ 1836              	.L114:
+ 528:../at_commander.c **** 		if (a[i] != b[i]) {
+ 1837              	 .loc 1 528 0
+ 1838 002c FB68     	 ldr r3,[r7,#12]
+ 1839 002e 7A68     	 ldr r2,[r7,#4]
+ 1840 0030 1344     	 add r3,r3,r2
+ 1841 0032 1B78     	 ldrb r3,[r3]
+ 1842 0034 002B     	 cmp r3,#0
+ 1843 0036 05D0     	 beq .L116
+ 528:../at_commander.c **** 		if (a[i] != b[i]) {
+ 1844              	 .loc 1 528 0 is_stmt 0 discriminator 1
+ 1845 0038 FB68     	 ldr r3,[r7,#12]
+ 1846 003a 3A68     	 ldr r2,[r7]
+ 1847 003c 1344     	 add r3,r3,r2
+ 1848 003e 1B78     	 ldrb r3,[r3]
+ 1849 0040 002B     	 cmp r3,#0
+ 1850 0042 E5D1     	 bne .L117
+ 1851              	.L116:
+ 533:../at_commander.c **** 	}
+ 534:../at_commander.c **** 	if (b[i] == '\0') {
+ 1852              	 .loc 1 534 0 is_stmt 1
+ 1853 0044 FB68     	 ldr r3,[r7,#12]
+ 1854 0046 3A68     	 ldr r2,[r7]
+ 1855 0048 1344     	 add r3,r3,r2
+ 1856 004a 1B78     	 ldrb r3,[r3]
+ 1857 004c 002B     	 cmp r3,#0
+ 1858 004e 01D1     	 bne .L118
+ 535:../at_commander.c **** 		return 1;
+ 1859              	 .loc 1 535 0
+ 1860 0050 0123     	 movs r3,#1
+ 1861 0052 00E0     	 b .L119
+ 1862              	.L118:
+ 536:../at_commander.c **** 	} else {
+ 537:../at_commander.c **** 		return 0;
+ 1863              	 .loc 1 537 0
+ 1864 0054 0023     	 movs r3,#0
+ 1865              	.L119:
+ 538:../at_commander.c **** 	}
+ 539:../at_commander.c **** }
+ 1866              	 .loc 1 539 0
+ 1867 0056 1846     	 mov r0,r3
+ 1868 0058 1437     	 adds r7,r7,#20
+ 1869              	.LCFI59:
+ 1870              	 .cfi_def_cfa_offset 4
+ 1871 005a BD46     	 mov sp,r7
+ 1872              	.LCFI60:
+ 1873              	 .cfi_def_cfa_register 13
+ 1874              	 
+ 1875 005c 5DF8047B 	 ldr r7,[sp],#4
+ 1876              	.LCFI61:
+ 1877              	 .cfi_restore 7
+ 1878              	 .cfi_def_cfa_offset 0
+ 1879 0060 7047     	 bx lr
+ 1880              	 .cfi_endproc
+ 1881              	.LFE364:
+ 1883 0062 00BF     	 .text
+ 1884              	.Letext0:
+ 1885              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stdarg.h"
+ 1886              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1887              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1888              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
+ 1889              	 .file 6 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_gpio.h"
+ 1890              	 .file 7 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 1891              	 .file 8 "<built-in>"
+ 1892              	 .file 9 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_usic.h"
+ 1893              	 .file 10 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/XMCLib/inc/xmc_uart.h"
+ 1894              	 .file 11 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Dave/Generated/UART/uart.h"
+ 1895              	 .file 12 "../at_commander.h"
+ 1896              	 .file 13 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 1897              	 .file 14 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Include/core_cm4.h"
+ 1898              	 .file 15 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+ 1899              	 .file 16 "C:/MCHP/Customers/BMZ/proof of concept/work/XMC4700_AnyCloud/Dave/Generated/UART/uart_extern.h"
+ 1900              	 .file 17 "../app.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 at_commander.c
     {standard input}:24     .rodata.digiCertGlobalRootG2:00000000 digiCertGlobalRootG2
@@ -2718,11 +2695,11 @@ DEFINED SYMBOLS
     {standard input}:366    .text.configureWLAN:00000050 $d
     {standard input}:381    .text.startWLAN:00000000 $t
     {standard input}:386    .text.startWLAN:00000000 startWLAN
-    {standard input}:1713   .text.ATCMD_ReadLine:00000000 ATCMD_ReadLine
+    {standard input}:1677   .text.ATCMD_ReadLine:00000000 ATCMD_ReadLine
     {standard input}:421    .text.startWLAN:00000024 $d
     {standard input}:435    .text.waitForAPConnect:00000000 $t
     {standard input}:440    .text.waitForAPConnect:00000000 waitForAPConnect
-    {standard input}:1829   .text.ATCMD_strcon:00000000 ATCMD_strcon
+    {standard input}:1793   .text.ATCMD_strcon:00000000 ATCMD_strcon
     {standard input}:480    .text.waitForAPConnect:0000002c $d
     {standard input}:509    .text.configureCloud:00000000 $t
     {standard input}:514    .text.configureCloud:00000000 configureCloud
@@ -2766,10 +2743,10 @@ DEFINED SYMBOLS
     {standard input}:1337   .text.ATCMD_Task:00000058 $t
     {standard input}:1432   .text.ATCMD_Task:000000c4 $d
     {standard input}:1437   .text.ATCMD_Print:00000000 $t
-    {standard input}:1697   .text.ATCMD_Print:00000148 $d
-    {standard input}:1708   .text.ATCMD_ReadLine:00000000 $t
-    {standard input}:1817   .text.ATCMD_ReadLine:00000078 $d
-    {standard input}:1824   .text.ATCMD_strcon:00000000 $t
+    {standard input}:1662   .text.ATCMD_Print:00000118 $d
+    {standard input}:1672   .text.ATCMD_ReadLine:00000000 $t
+    {standard input}:1781   .text.ATCMD_ReadLine:00000078 $d
+    {standard input}:1788   .text.ATCMD_strcon:00000000 $t
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

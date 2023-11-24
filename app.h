@@ -11,7 +11,7 @@
 #include "DAVE.h"
 #include <time.h>
 #include <stdlib.h>
-#include <stdbool.h>  // Include the necessary header for bool type
+#include <stdbool.h>
 #include <stdio.h>
 
 // Function declarations

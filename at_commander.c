@@ -78,6 +78,7 @@ void initModule(void) {
  * Updates the root certificate for secure communication by sending the certificate to the module.
  */
 void updateRootCert(void) {
+
 	sprintf(buffer, "AT+LOADCERT=%d,\"DigiCertGlobalRootG2\"\r\n",
 			strlen(digiCertGlobalRootG2));
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
@@ -93,6 +94,7 @@ void updateRootCert(void) {
  * Configures WLAN settings, such as SSID, security type, password, NTP server, and channel.
  */
 void configureWLAN(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_SSID, MY_AP);
 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_SEC_TYPE, PAR_SEC_TYPE_WPA2);
@@ -101,6 +103,7 @@ void configureWLAN(void) {
 	ATCMD_Print("AT+WSTAC=%d,\"%s\"\r\n", ID_NTP_SVR, NTP_SERVER);
 	ATCMD_Print("AT+WSTAC=%d,%d\r\n", ID_NTP_STATIC, PAR_NTP_STATIC);
 	ATCMD_state = STATE_START_WLAN;
+
 }
 /*
  * Function: startWLAN
@@ -108,6 +111,7 @@ void configureWLAN(void) {
  * Initiates the WLAN connection using the configured parameters.
  */
 void startWLAN(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+WSTA=%d\r\n", PAR_USE_CONFIGURATION);
 	ATCMD_ReadLine();
@@ -122,6 +126,7 @@ void startWLAN(void) {
  * Checks the status of the WLAN connection and transitions to the next state if connected.
  */
 void waitForAPConnect(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+WSTA\r\n");
 	ATCMD_ReadLine();
@@ -137,6 +142,7 @@ void waitForAPConnect(void) {
  * Configures cloud-related parameters, such as MQTT broker address, port, client ID, and username.
  */
 void configureCloud(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR,
 	MY_BROKER_ADRESS);
@@ -149,6 +155,7 @@ void configureCloud(void) {
 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
 	ATCMD_state = STATE_SUB_DPS;
+
 }
 /*
  * Function: subscribeDPS
@@ -156,6 +163,7 @@ void configureCloud(void) {
  * Subscribes to the DPS registration topic.
  */
 void subscribeDPS(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", SUB_DPS_REGISTRATION_TOPIC,
 	MQTT_QOS);
@@ -168,12 +176,14 @@ void subscribeDPS(void) {
  * Publishes a message to the DPS PUT topic with a formatted payload.
  */
 void publishDPSPut(void) {
+
 	createPubMQTTString();
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
 	MQTT_NOT_RETAIN,
 	PUB_TOPIC_DPS_PUT, pubString);
 	ATCMD_state = STATE_PUB_DPS_REG_GET;
+
 }
 /*
  * Function: publishDPSGet
@@ -252,13 +262,13 @@ void disconnectMQTT(void) {
  * Reconnects to the cloud after disconnecting, updating parameters based on the assigned hub.
  */
 void reconnectCloud(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_BROKER_ADDR, myBrokerAdress);
 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_BROKER_PORT,
 	MQTT_BROKER_PORT);
 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_CLIENT_ID, deviceId);
 	ATCMD_Print("AT+MQTTC=%d,\"%s\"\r\n", ID_MQTT_USERNAME, brokerUsername);
-
 	ATCMD_Print("AT+MQTTC=%d,%d\r\n", ID_MQTT_TLS_CONF_IDX, TLS_ENABLE);
 	ATCMD_Print("AT+MQTTCONN=%d\r\n", MQTT_RCLEAN);
 	ATCMD_state = STATE_AZURE_SUB_1;
@@ -270,6 +280,7 @@ void reconnectCloud(void) {
  * Subscribes to the first Azure IoT Hub topic.
  */
 void azureSubscribe_1(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_METHOD_REQUEST,
 	MQTT_SUB_QOS);
@@ -282,6 +293,7 @@ void azureSubscribe_1(void) {
  * Subscribes to the second Azure IoT Hub topic.
  */
 void azureSubscribe_2(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_DESIRED,
 	MQTT_SUB_QOS);
@@ -294,6 +306,7 @@ void azureSubscribe_2(void) {
  * Subscribes to the third Azure IoT Hub topic.
  */
 void azureSubscribe_3(void) {
+
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print("AT+MQTTSUB=\"%s\",%d\r\n", TOPIC_IOTC_PROPERTY_RESPONSE,
 	MQTT_SUB_QOS);
@@ -306,12 +319,10 @@ void azureSubscribe_3(void) {
  * Publishes telemetry data to the cloud with a formatted payload.
  */
 void publishTelemetry(void) {
+
 	createPubMQTTString();
 	ATCMD_Print("ATE%d\r\n", TURN_OFF_ECHO);
 	ATCMD_Print(bufferPayload);
-	//I have to change it
-	//ATCMD_Print("AT+MQTTPUB=%d,%d,%d,\"%s\",\"%s\"\r\n", MQTT_DUP, MQTT_QOS,
-	//MQTT_NOT_RETAIN, pub_topic_telemetry, json);
 	setTimeout(10);
 	ATCMD_state = STATE_TIMEOUT;
 
@@ -322,6 +333,7 @@ void publishTelemetry(void) {
  * Handles the timeout scenario by transitioning to the next state if a timeout occurs.
  */
 void timeoutHandling(void) {
+
 	if (isTimeout()) {
 		ATCMD_state = STATE_PUBLISH_CLOUD;
 	}
@@ -333,7 +345,9 @@ void timeoutHandling(void) {
  * Executes the appropriate task based on the current state of the state machine.
  */
 void ATCMD_Task(void) {
+
 	switch (ATCMD_state) {
+
 	case STATE_INIT:
 		initModule();
 		break;
@@ -460,12 +474,12 @@ void ATCMD_Print(const char *format, ...) {
 	}
 
 	// MVo: check only for length of received string
-	for (int ix = 0; ix < ret_length; ix++) {
+	/*for (int ix = 0; ix < ret_length; ix++) {
 		if (okResponse[ix] != ATCMD_ReceiveBuffer[ix]) {
 			ATCMD_Error_Code = 1;
 			return;
 		}
-	}
+	}*/
 }
 
 /*
@@ -508,6 +522,7 @@ uint8_t ATCMD_ReadLine(void) {
  * Compares two strings and returns 1 if they are equal, 0 otherwise.
  */
 int ATCMD_strcon(char a[], char b[]) {
+
 	int i = 0;
 
 	while (a[i] != '\0' && b[i] != '\0') {
